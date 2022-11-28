@@ -1,0 +1,31 @@
+.interactive-button {
+  //TODO: we can rename this selector if it needs. These buttons are used inside header and modal
+  width: 129.5px;
+  height: 44px;
+
+  font-size: 12px;
+  font-weight: $main-font-weight;
+  line-height: calc(16 / 12);
+  border: 1px solid $background-color;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @include tablet {
+    width: 152px;
+  }
+  @mixin desktop {
+    width: 148px;
+  }
+
+  &__active {
+    color: $background-highlight-color;
+    background-color: $accent-color;
+    border-color: $accent-color;
+  }
+  &__inactive {
+    background-color: transparent;
+    color: $background-color;
+  }
+}
