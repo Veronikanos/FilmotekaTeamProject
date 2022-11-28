@@ -3,14 +3,14 @@
   padding-inline: 20px;
   margin: 0 auto;
   @include mobile {
-    width: 480px;
+    width: 320px;
   }
   @include tablet {
     width: 768px;
     padding-inline: 32px;
   }
   @include desktop {
-    width: 1200px;
+    width: 1280px;
     padding-inline: 16px;
   }
 }
