@@ -1,0 +1,136 @@
+.header {
+  background-color: black;
+  color: $white-color;
+}
+
+.header-container {
+  height: 230px;
+}
+
+.logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav {
+  padding-top: 40px;
+  margin-bottom: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__controls {
+    display: flex;
+    gap: 40px;
+    line-height: calc(14 / 12);
+    &-item {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.active-page {
+  position: relative;
+}
+
+.nav__controls-item::after,
+.active-page::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  bottom: -2px;
+  background: $accent-color;
+  border-radius: 2px;
+}
+
+.website-name {
+  display: inline-block;
+  font-size: 30px;
+  line-height: calc(35 / 30);
+  @include mobile-only {
+    display: none;
+  }
+}
+
+.form-wrapper {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: calc(16.5 / 14);
+  color: #fff;
+  @include tablet {
+    line-height: calc(16 / 14);
+  }
+}
+
+.header__form {
+  font-size: inherit;
+  text-align: center;
+  position: relative;
+
+  &-input {
+    background: transparent;
+    border: none;
+    border-bottom: 0.5px solid $white-color;
+    width: 100%;
+    outline: none;
+    caret-color: $white-color;
+
+    &::placeholder {
+      color: $white-color;
+    }
+
+    &:focus {
+      color: $white-color;
+    }
+
+    @include tablet {
+      width: 336px;
+    }
+    @include desktop {
+      width: 394px;
+    }
+  }
+
+  &-button {
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: -10px;
+    cursor: pointer;
+
+    @include tablet {
+      right: 50%;
+      transform: translateX(172px);
+    }
+    @include desktop {
+      transform: translateX(197px);
+    }
+
+    &::before {
+      content: '🍳';
+    }
+  }
+
+  &-warning {
+    margin-top: 20px;
+    text-align: center;
+    color: $red-color;
+
+    @include mobile-only {
+      margin-top: 16px;
+      text-align: start;
+    }
+  }
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  @include desktop {
+    gap: 16px;
+  }
+}
