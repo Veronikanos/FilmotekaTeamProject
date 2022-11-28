@@ -1,9 +1,17 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
 html {
+  box-sizing: border-box;
   scroll-behavior: smooth;
   overflow-x: clip;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   color: $main-color;
   font-family: $main-font;
@@ -14,6 +22,8 @@ body {
   background-size: contain;
   background-attachment: fixed;
   overflow-x: clip;
+
+  // font-weight: 500;
 }
 
 h1,
@@ -40,10 +50,27 @@ ul {
 
 a {
   text-decoration: none;
+  display: block;
   color: currentColor;
   // cursor: $cursor-dark;
 }
 
 textarea {
   resize: none;
+}
+
+// 💡Folks, let's use this class to hide elements that have to be invisible
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
