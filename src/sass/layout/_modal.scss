@@ -18,7 +18,7 @@
     flex-direction: row;
   }
 
-  @media screen and (min-width: 1024px) {
+  @include desktop {
     width: 806px;
     padding: 40px 12px;
   }
@@ -31,13 +31,12 @@
   img {
     width: 240px;
 
-    @media screen and (min-width: 768px) and (max-width: 1024px) {
+    @include tablet-only {
       width: 265px;
     }
 
-    @media screen and (min-width: 1024px) {
+    @include desktop {
       width: 375px;
-
     }
   }
 }
@@ -115,7 +114,6 @@
 .modal__btn-watched {
   background-color: $accent-color;
   color: $white-color;
-
 }
 
 .modal__item-title {

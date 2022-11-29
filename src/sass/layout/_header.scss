@@ -26,6 +26,7 @@
     line-height: calc(14 / 12);
     &-item {
       text-transform: uppercase;
+      position: relative;
     }
   }
 }
