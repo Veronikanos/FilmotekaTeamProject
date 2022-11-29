@@ -1,16 +1,27 @@
 .main-section {
   padding-top: 20px;
   padding-bottom: 40px;
+  @include tablet {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 
   &__allcards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    @include tablet {
+      gap: 32px;
+    }
   }
 
   &__card {
     width: 280px;
     box-sizing: border-box;
+
+    @include tablet {
+      width: 336px;
+    }
   }
 
   &__image {
