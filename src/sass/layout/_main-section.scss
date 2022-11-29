@@ -7,10 +7,6 @@
     padding-bottom: 60px;
   }
 
-  @include desktop {
-    gap: 32px;
-  }
-
   &__allcards {
     display: flex;
     flex-wrap: wrap;
@@ -18,6 +14,10 @@
 
     @include tablet {
       gap: 32px;
+    }
+
+    @include desktop {
+      gap: 16px;
     }
   }
 
@@ -27,6 +27,9 @@
 
     @include tablet {
       width: 336px;
+    }
+    @include desktop {
+      width: 394px;
     }
   }
 
