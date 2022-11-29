@@ -15,10 +15,12 @@
 
     @include tablet {
       gap: 32px;
+      margin-bottom: 60px;
     }
 
     @include desktop {
       gap: 32px 16px;
+      margin-bottom: 60px;
     }
   }
 
