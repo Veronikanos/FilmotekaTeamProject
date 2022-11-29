@@ -17,7 +17,7 @@
     }
 
     @include desktop {
-      gap: 16px;
+      gap: 32px 16px;
     }
   }
 
@@ -48,5 +48,8 @@
   &__description {
     color: $accent-color;
     text-transform: capitalize;
+  }
+
+  &__pages {
   }
 }
