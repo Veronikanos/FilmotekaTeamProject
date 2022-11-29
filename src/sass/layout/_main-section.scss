@@ -1,4 +1,13 @@
 .main-section {
+  padding: 20px;
+  padding-bottom: 40px;
+
+  &__allcards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
   &__card {
     width: 280px;
     box-sizing: border-box;
@@ -11,6 +20,11 @@
     margin: 0px;
   }
 
+  &__name {
+    margin-top: 10px;
+  }
+
   &__description {
+    color: $accent-color;
   }
 }
