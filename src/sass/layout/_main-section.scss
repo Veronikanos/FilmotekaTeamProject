@@ -52,23 +52,24 @@
   }
 
   &__pages {
-    &-buttons {
-      display: flex;
-      justify-content: center;
-    }
+  }
 
-    &-button {
-      font-size: 12px;
-      border: transparent;
-      background-color: transparent;
-      border-radius: 5px;
-      width: 40px;
-      height: 40px;
+  &__pages-buttons {
+    display: flex;
+    justify-content: center;
+  }
 
-      &:hover {
-        color: $white-color;
-        background-color: $accent-color;
-      }
+  &__pages-button {
+    font-size: 12px;
+    border: transparent;
+    background-color: transparent;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+
+    &:hover {
+      color: $white-color;
+      background-color: $accent-color;
     }
   }
 }
