@@ -22,9 +22,11 @@
 
   &__name {
     margin-top: 10px;
+    text-transform: uppercase;
   }
 
   &__description {
     color: $accent-color;
+    text-transform: capitalize;
   }
 }
