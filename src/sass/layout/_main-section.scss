@@ -1,15 +1,21 @@
 .main-section {
   padding-top: 20px;
   padding-bottom: 40px;
+
   @include tablet {
     padding-top: 60px;
     padding-bottom: 60px;
+  }
+
+  @include desktop {
+    gap: 32px;
   }
 
   &__allcards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+
     @include tablet {
       gap: 32px;
     }
