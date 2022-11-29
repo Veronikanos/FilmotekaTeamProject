@@ -1,8 +1,14 @@
 .main-section {
   &__card {
+    width: 280px;
+    box-sizing: border-box;
   }
 
   &__image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0px;
   }
 
   &__description {
