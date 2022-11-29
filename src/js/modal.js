@@ -9,6 +9,7 @@ function showModal(e) {
     if (e.currentTarget.nodeName === 'DIV') {
         modal.classList.remove('visually-hidden');
         overflow.classList.remove('visually-hidden');
+        cardDivs.removeEventListener('click', showModal);
         document.addEventListener('keydown', closeModalonEsc);
         closeBtn.addEventListener('click', closeModal);
         overflow.addEventListener('click', closeModalOverflow);
@@ -28,4 +29,5 @@ function closeModal() {
     overflow.classList.add('visually-hidden');
     document.removeEventListener('keydown', closeModal);
     closeBtn.removeEventListener('click', closeModal);
+    overflow.removeEventListener('click', closeModalOverflow);
 }
