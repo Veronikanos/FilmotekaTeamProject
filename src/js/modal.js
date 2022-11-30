@@ -6,9 +6,30 @@ const modal = document.querySelector('.modal');
 const overflow = document.querySelector('.overflow');
 const closeBtn = document.querySelector('.modal__close-btn');
 const innerModal = document.querySelector('.modal__main');
-const ttt = [];
+const queue = [];
+const watched = [];
 
 cardDivs.addEventListener('click', showModal);
+
+function addToWatched(e) {
+  const clickedFilm = allMoviesList[e.target.dataset.id];
+  if (watched.find(film => film === clickedFilm)) {
+    alert('Film already in the watched list!');
+  } else {
+    watched.push(clickedFilm);
+    localStorage.setItem('watched', JSON.stringify(watched));
+  }
+}
+
+function addToQueue(e) {
+  const clickedFilm = allMoviesList[e.target.dataset.id];
+  if (queue.find(film => film === clickedFilm)) {
+    alert('Film already in the queue!');
+  } else {
+    queue.push(clickedFilm);
+    localStorage.setItem('queue', JSON.stringify(queue));
+  }
+}
 
 function showModal(e) {
   if (e.currentTarget !== e.target) {
@@ -93,13 +114,17 @@ async function createModal(id) {
         </p>
       </div>
           <div class="modal__buttons">
-      <button class="modal__btn-watched interactive-button">
+      <button class="modal__btn-watched interactive-button" data-id=${id}>
         add to Watched
       </button>
-      <button class="modal__btn-queue interactive-button">add to queue</button>
+      <button class="modal__btn-queue interactive-button" data-id=${id}>add to queue</button>
     </div>
     </div>
 
     `;
   innerModal.innerHTML = marcup;
+  const addToWatchedBtn = document.querySelector('.modal__btn-watched');
+  const addToQueueBtn = document.querySelector('.modal__btn-queue');
+  addToQueueBtn.addEventListener('click', addToQueue);
+  addToWatchedBtn.addEventListener('click', addToWatched);
 }
