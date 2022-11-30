@@ -1,24 +1,45 @@
-import { createMarkupTrendingFilms } from './js/render-main-section';
+import MoviesApiService from './js/api-service';
+import Notiflix from 'notiflix';
+import { onLoadedHomePage } from './js/render-main-section';
 import { getGenres } from './js/genres';
+import { createMarkupTrendingFilms } from './js/render-main-section';
 
-const axios = require('axios').default;
+const moviesApiService = new MoviesApiService();
 
-const API_KEY = '2d95e97f255e7635245c1980eab541d3';
-const allCardsSection = document.querySelector('.main-section__allcards');
-export let allMoviesList;
-// onLoadedHomePage();
+onLoadedHomePage(moviesApiService);
 
-(async function onLoadedHomePage() {
+const headerFormInput = document.querySelector('form.header__form');
+headerFormInput.addEventListener('submit', onSubmitSearchForm);
+
+async function onSubmitSearchForm(event) {
+  event.preventDefault();
   try {
-    const genres = await getGenres(); //Get all genres. This is async function.
+    moviesApiService.query = event.target.elements.searchQuery.value
+      .trim()
+      .toLowerCase();
+    if (moviesApiService.searchQuery === '') {
+      return;
+    }
+    // moviesApiService.resetPage();
+    const films = await moviesApiService.fetchMoviesByKeyword();
 
-    const result = await axios.get(
-      `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`
+    if (films.length === 0) {
+      // setStyleError();
+      console.log('films.length === 0');
+    } else {
+      // resetStyleError();
+    }
+    const genres = await getGenres(); // треба винести в локал сторедж, бо повторюється запит
+    const allCardsSection = document.querySelector('.main-section__allcards');
+    allCardsSection.innerHTML = '';
+
+    allCardsSection.insertAdjacentHTML(
+      'beforeend',
+      createMarkupTrendingFilms(films.data.results, genres).join('')
     );
-    allMoviesList = result.data.results;
-    const res = createMarkupTrendingFilms(allMoviesList, genres);
-    allCardsSection.insertAdjacentHTML('beforeend', res.join(''));
+
+    headerFormInput.reset();
   } catch (error) {
-    // console.log(error);
+    Notiflix.Notify.failure(error);
   }
-})();
+}
