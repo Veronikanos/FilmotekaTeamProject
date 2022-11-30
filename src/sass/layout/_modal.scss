@@ -24,6 +24,10 @@
     width: 806px;
     padding: 40px 12px;
   }
+
+  &__main {
+    display: flex;
+  }
 }
 
 .modal__img {
