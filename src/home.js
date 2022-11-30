@@ -5,9 +5,9 @@ const axios = require('axios').default;
 
 const API_KEY = '2d95e97f255e7635245c1980eab541d3';
 const allCardsSection = document.querySelector('.main-section__allcards');
-onLoadedHomePage();
+// onLoadedHomePage();
 
-async function onLoadedHomePage() {
+(async function onLoadedHomePage() {
   try {
     const genres = await getGenres(); //Get all genres. This is async function.
 
@@ -19,4 +19,4 @@ async function onLoadedHomePage() {
   } catch (error) {
     // console.log(error);
   }
-}
+})();
