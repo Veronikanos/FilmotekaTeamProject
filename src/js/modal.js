@@ -1,4 +1,6 @@
 import { allMoviesList } from '../home';
+import { getGenres } from './genres';
+
 const cardDivs = document.querySelector('.main-section__allcards');
 const modal = document.querySelector('.modal');
 const overflow = document.querySelector('.overflow');
@@ -39,8 +41,7 @@ function closeModal() {
   overflow.removeEventListener('click', closeModalOverflow);
 }
 
-function createModal(id) {
-  console.log(allMoviesList[id]);
+async function createModal(id) {
   const {
     poster_path,
     original_title,
@@ -51,7 +52,8 @@ function createModal(id) {
     popularity,
     overview,
   } = allMoviesList[id];
-  console.log(genre_ids);
+  const genres = await getGenres();
+  const genre = genres.find(genre => genre.id === genre_ids[0]);
   const marcup = `<div class="modal__img">
       <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
     </div>
@@ -75,7 +77,7 @@ function createModal(id) {
         </li>
         <li class="modal__item">
           <div class="modal__item-first">Genre</div>
-          <div>Western</div>
+          <div>${genre.name}</div>
         </li>
       </ul>
       <div class="modal__about-info">
