@@ -1,10 +1,77 @@
 .header {
   background-color: black;
   color: $white-color;
-}
-
-.header-container {
   height: 230px;
+  padding-bottom: 56px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__home {
+    background-image: url('../images/header-bg/home-bg-s.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../images/header-bg/home-bg-s@2x.jpg');
+    }
+
+    @include tablet {
+      background-image: url('../images/header-bg/home-bg-m.jpg');
+
+      @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('../images/header-bg/home-bg-m@2x.jpg');
+      }
+    }
+
+    @include desktop {
+      background-image: url('../images/header-bg/home-bg-l.jpg');
+
+      @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('../images/header-bg/home-bg-l@2x.jpg');
+      }
+    }
+  }
+
+  &__library {
+    background-image: url('../images/header-bg/library-bg-s.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../images/header-bg/library-bg-s@2x.jpg');
+    }
+
+    @include tablet {
+      background-image: url('../images/header-bg/library-bg-m.jpg');
+
+      @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('../images/header-bg/library-bg-m@2x.jpg');
+      }
+    }
+
+    @include desktop {
+      background-image: url('../images/header-bg/library-bg-l.jpg');
+
+      @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('../images/header-bg/library-bg-l@2x.jpg');
+      }
+    }
+  }
 }
 
 .logo {
