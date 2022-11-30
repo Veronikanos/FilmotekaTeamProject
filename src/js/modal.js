@@ -54,7 +54,10 @@ async function createModal(id) {
     overview,
   } = allMoviesList[id];
   const genres = await getGenres();
-  const genre = genres.find(genre => genre.id === genre_ids[0]);
+  const finalGenres = [];
+  genre_ids.forEach(idx => {
+    finalGenres.push(genres.find(genre => genre.id === idx).name);
+  });
   const marcup = `<div class="modal__img">
       <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
     </div>
@@ -80,7 +83,7 @@ async function createModal(id) {
         </li>
         <li class="modal__item">
           <div class="modal__item-first">Genre</div>
-          <div>${genre.name}</div>
+          <div>${finalGenres.join(', ')}</div>
         </li>
       </ul>
       <div class="modal__about-info">
