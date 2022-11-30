@@ -1,4 +1,3 @@
-import { allMoviesList } from '../home';
 import { getGenres } from './genres';
 
 const cardDivs = document.querySelector('.main-section__allcards');
@@ -9,10 +8,17 @@ const innerModal = document.querySelector('.modal__main');
 const queue = [];
 const watched = [];
 
+function updateMoviesList() {
+  const allMoviesListFromStorage = localStorage.getItem('currentFilmList');
+  const allMoviesList = JSON.parse(allMoviesListFromStorage);
+  return allMoviesList;
+}
+
 cardDivs.addEventListener('click', showModal);
 
 function addToWatched(e) {
-  const clickedFilm = allMoviesList[e.target.dataset.id];
+  const currentList = updateMoviesList();
+  const clickedFilm = currentList[e.target.dataset.id];
   if (watched.find(film => film === clickedFilm)) {
     alert('Film already in the watched list!');
   } else {
@@ -22,7 +28,8 @@ function addToWatched(e) {
 }
 
 function addToQueue(e) {
-  const clickedFilm = allMoviesList[e.target.dataset.id];
+  const currentList = updateMoviesList();
+  const clickedFilm = currentList[e.target.dataset.id];
   if (queue.find(film => film === clickedFilm)) {
     alert('Film already in the queue!');
   } else {
@@ -64,6 +71,7 @@ function closeModal() {
 }
 
 async function createModal(id) {
+  const currentList = updateMoviesList();
   const {
     poster_path,
     original_title,
@@ -73,7 +81,7 @@ async function createModal(id) {
     vote_count,
     popularity,
     overview,
-  } = allMoviesList[id];
+  } = currentList[id];
   const genres = await getGenres();
   const finalGenres = [];
   genre_ids.forEach(idx => {

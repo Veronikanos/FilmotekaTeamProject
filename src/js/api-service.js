@@ -12,6 +12,10 @@ export default class MoviesApiService {
       const result = await axios.get(
         `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.API_KEY}`
       );
+      localStorage.setItem(
+        'currentFilmList',
+        JSON.stringify(result.data.results)
+      );
       return result;
     } catch (error) {
       console.log(error);
@@ -22,6 +26,10 @@ export default class MoviesApiService {
     try {
       const result = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&language=en-US&query=${this.query}&page=${this.page}&include_adult=false`
+      );
+      localStorage.setItem(
+        'currentFilmList',
+        JSON.stringify(result.data.results)
       );
       return result;
     } catch (error) {
