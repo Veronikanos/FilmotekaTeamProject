@@ -17,7 +17,6 @@
   @include tablet {
     width: 704px;
     padding: 40px 36px;
-    flex-direction: row;
   }
 
   @include desktop {
@@ -27,12 +26,22 @@
 
   &__main {
     display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    @include desktop {
+      gap: 16px;
+    }
   }
 }
 
 .modal__img {
   flex-basis: 50%;
   flex-shrink: 0;
+  margin-bottom: 20px;
 
   img {
     width: 240px;
@@ -155,6 +164,10 @@
 
   @include tablet {
     width: 125px;
+  }
+
+  @include desktop {
+    margin-left: 24px;
   }
 }
 

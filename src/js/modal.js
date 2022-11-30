@@ -6,6 +6,7 @@ const modal = document.querySelector('.modal');
 const overflow = document.querySelector('.overflow');
 const closeBtn = document.querySelector('.modal__close-btn');
 const innerModal = document.querySelector('.modal__main');
+const ttt = [];
 
 cardDivs.addEventListener('click', showModal);
 
@@ -63,7 +64,9 @@ async function createModal(id) {
         <li class="modal__item">
           <div class="modal__item-first">Vote / Votes</div>
           <div class="modal__item-votes">
-            <span class="modal__item-bg modal__item--accent">${vote_average}</span> /
+            <span class="modal__item-bg modal__item--accent">${vote_average.toFixed(
+              1
+            )}</span> /
             <span class="modal__item-bg modal__item--grey">${vote_count}</span>
           </div>
         </li>
@@ -85,16 +88,15 @@ async function createModal(id) {
         <p class="modal__about-text">
           ${overview}
         </p>
-        <div class="modal__buttons">
-          <button class="modal__btn-watched interactive-button">
-            add to Watched
-          </button>
-          <button class="modal__btn-queue interactive-button">
-            add to queue
-          </button>
-        </div>
       </div>
+          <div class="modal__buttons">
+      <button class="modal__btn-watched interactive-button">
+        add to Watched
+      </button>
+      <button class="modal__btn-queue interactive-button">add to queue</button>
     </div>
+    </div>
+
     `;
   innerModal.innerHTML = marcup;
 }
