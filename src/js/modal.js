@@ -1,5 +1,3 @@
-import { getGenres } from './genres';
-
 const cardDivs = document.querySelector('.main-section__allcards');
 const modal = document.querySelector('.modal');
 const overflow = document.querySelector('.overflow');
@@ -82,7 +80,7 @@ async function createModal(id) {
     popularity,
     overview,
   } = currentList[id];
-  const genres = await getGenres();
+  const genres = JSON.parse(localStorage.getItem('allGenres'));
   const finalGenres = [];
   genre_ids.forEach(idx => {
     finalGenres.push(genres.find(genre => genre.id === idx).name);
