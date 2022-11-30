@@ -17,6 +17,6 @@ async function onLoadedHomePage() {
     const res = createMarkupTrendingFilms(result.data.results, genres);
     allCardsSection.insertAdjacentHTML('beforeend', res.join(''));
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
