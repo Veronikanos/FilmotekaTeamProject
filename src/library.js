@@ -22,3 +22,5 @@ const pagination = new Pagination(paginationContainer, options);
 pagination.on('afterMove', function (eventData) {
   console.log(eventData.page);
 });
+
+import './js/library-page-only/filter';
