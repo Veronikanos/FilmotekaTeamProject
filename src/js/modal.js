@@ -19,7 +19,7 @@ cardDivs.addEventListener('click', showModal);
 function addToWatched(e) {
   const currentList = updateMoviesList();
   const clickedFilm = currentList[e.target.dataset.id];
-  if (watched.find(film => film === clickedFilm)) {
+  if (watched.find(film => film.id === clickedFilm.id)) {
     alert('Film already in the watched list!');
   } else {
     watched.push(clickedFilm);
@@ -30,7 +30,7 @@ function addToWatched(e) {
 function addToQueue(e) {
   const currentList = updateMoviesList();
   const clickedFilm = currentList[e.target.dataset.id];
-  if (queue.find(film => film === clickedFilm)) {
+  if (queue.find(film => film.id === clickedFilm.id)) {
     alert('Film already in the queue!');
   } else {
     queue.push(clickedFilm);

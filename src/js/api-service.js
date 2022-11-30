@@ -41,6 +41,10 @@ export default class MoviesApiService {
     this.page = 1;
   }
 
+  setPage(num) {
+    this.page = num;
+  }
+
   get query() {
     return this.searchQuery;
   }
