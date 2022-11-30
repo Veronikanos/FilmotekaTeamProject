@@ -1,3 +1,15 @@
+import { getGenres } from './genres';
+
+export async function onLoadedHomePage(moviesApiService) {
+  const allCardsSection = document.querySelector('.main-section__allcards');
+
+  const genres = await getGenres(); //Get all genres. This is async function.
+
+  const result = await moviesApiService.fetchTrending();
+  const markup = createMarkupTrendingFilms(result.data.results, genres);
+  allCardsSection.insertAdjacentHTML('beforeend', markup.join(''));
+}
+
 export function createMarkupTrendingFilms(movies, genres) {
   const allMovies = movies.map(
     ({ poster_path, release_date, original_title, title, genre_ids }) => {
@@ -22,10 +34,10 @@ export function createMarkupTrendingFilms(movies, genres) {
 }
 
 function findGenres(ids, genres) {
-  let res = '';
+  let res = [];
   for (const item of ids) {
     let h = genres.find(genre => genre.id === Number(item));
-    res = `${res} ${h.name}`;
+    res.push(h.name);
   }
-  return res;
+  return res.join(', ');
 }
