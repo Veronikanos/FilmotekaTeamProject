@@ -20,5 +20,11 @@
 <symbol id="search" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
    <path d="M5.5 9.5a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM10.5 10.5 8.325 8.325" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
+<symbol id="arrow-left" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M12.667 8H3.333M8 12.667 3.333 8 8 3.333"  stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="arrow-right" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M3.333 8h9.334M8 12.667 12.667 8 8 3.333"  stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
 </defs>
 </svg>
