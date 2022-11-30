@@ -35,6 +35,7 @@
     @include tablet {
       width: 336px;
     }
+
     @include desktop {
       width: 394px;
     }
@@ -70,8 +71,7 @@
     text-transform: capitalize;
   }
 
-  &__pages {
-  }
+  &__pages {}
 
   &__pages-buttons {
     display: flex;
@@ -84,6 +84,7 @@
     border-radius: 5px;
     width: 40px;
     height: 40px;
+    transition: background-color $transition-style, color $transition-style;
 
     @include desktop {
       font-size: 12px;
@@ -92,15 +93,23 @@
     &:hover {
       color: $white-color;
       background-color: $accent-color;
+      cursor: pointer;
+      ;
     }
   }
 }
 
+.main-section__arrow {
+  background-color: $background-highlight-color;
+}
+
 .icon {
   display: inline-block;
-  width: 1em;
-  height: 1em;
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
+
+  &:hover {
+    stroke: $white-color;
+  }
 }
