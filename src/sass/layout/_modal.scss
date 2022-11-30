@@ -12,6 +12,8 @@
   background-color: $white-color;
   overflow-y: scroll;
 
+  z-index: 10;
+
   @include tablet {
     width: 704px;
     padding: 40px 36px;
@@ -150,4 +152,13 @@
   @include tablet {
     width: 125px;
   }
+}
+
+.overflow {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.329);
+  z-index: 5;
+  position: fixed;
+  top: 0;
 }
