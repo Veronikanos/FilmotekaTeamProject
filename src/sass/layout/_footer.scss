@@ -1,0 +1,61 @@
+.footer {
+    height: 100px;
+    background-color: $background-highlight-color;
+    padding-top: 28px;
+
+    @include tablet {
+        height: 79px;
+    }
+
+    @include desktop {
+        height: 77px;
+    }
+}
+.footer-container {
+    text-align: center;
+}
+.footer-paragraph{
+        font-size: 16px;
+        font-weight: 400;
+        color: $copyright-color;
+}
+.footer-link{
+    text-decoration: underline;
+    display: inline;
+    &:hover {
+            color: $accent-color;
+        }
+}
+.icon-heart {
+    fill: $accent-color;
+   
+}
+
+.rotate-center {
+    -webkit-animation: rotate-center 1.2s ease-in-out infinite both;
+    animation: rotate-center 1.2s ease-in-out infinite both
+}
+
+@-webkit-keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
