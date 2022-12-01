@@ -12,6 +12,12 @@ const DATA_KEY2 = 'queue';
 function renderWatched(event) {
   event.preventDefault();
 
+  let dataToRender = JSON.parse(localStorage.getItem(DATA_KEY1));
+  if (!dataToRender) {
+    Notiflix.Notify.warning('No movies added!');
+    return;
+  }
+
   event.target.classList.remove('inactive');
   event.target.classList.add('active');
 
@@ -22,6 +28,12 @@ function renderWatched(event) {
 }
 function renderQueue(event) {
   event.preventDefault();
+
+  let dataToRender = JSON.parse(localStorage.getItem(DATA_KEY2));
+  if (!dataToRender) {
+    Notiflix.Notify.warning('No movies added!');
+    return;
+  }
 
   event.target.classList.remove('inactive');
   event.target.classList.add('active');
@@ -35,7 +47,8 @@ function renderQueue(event) {
 function renderData(DATA_KEY) {
   let dataToRender = JSON.parse(localStorage.getItem(DATA_KEY));
   if (!dataToRender) {
-    return Notiflix.Notify.warning('No movies added!');
+    Notiflix.Notify.warning('No movies added!');
+    return;
   }
   const markup = renderSearchResult(dataToRender);
   cardsRenderDivRef.innerHTML = markup.join('');
