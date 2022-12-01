@@ -76,8 +76,8 @@ function removeFromQueue(e) {
 
 export function showModal(e) {
   if (e.currentTarget !== e.target) {
-    modal.classList.remove('visually-hidden');
-    overflow.classList.remove('visually-hidden');
+    modal.classList.remove('hidden-modal');
+    overflow.classList.remove('hidden-modal');
     allCardsSection.removeEventListener('click', showModal);
     document.addEventListener('keydown', closeModalOnEsc);
     closeBtn.addEventListener('click', closeModal);
@@ -100,8 +100,8 @@ function closeModalOnEsc(e) {
 }
 
 function closeModal() {
-  modal.classList.add('visually-hidden');
-  overflow.classList.add('visually-hidden');
+  modal.classList.add('hidden-modal');
+  overflow.classList.add('hidden-modal');
   allCardsSection.addEventListener('click', showModal);
   document.removeEventListener('keydown', closeModal);
   closeBtn.removeEventListener('click', closeModal);
