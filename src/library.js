@@ -1,3 +1,2 @@
-import Notiflix from 'notiflix';
-
+import './js/refs';
 import './js/library-page-only/filter';
