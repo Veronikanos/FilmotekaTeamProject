@@ -209,7 +209,11 @@
 .buttons-wrapper {
   display: flex;
   justify-content: center;
-  gap: 32px;
+  gap: 20px;
+
+  @include tablet {
+    gap: 32px;
+  }
 
   @include desktop {
     gap: 16px;

@@ -159,17 +159,7 @@
   gap: 20px;
 }
 
-.interactive-button {
-  width: 110px;
 
-  @include tablet {
-    width: 125px;
-  }
-
-  @include desktop {
-    margin-left: 24px;
-  }
-}
 
 .overflow {
   width: 100vw;
