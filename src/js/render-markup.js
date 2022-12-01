@@ -1,5 +1,4 @@
 export function renderSearchResult(movies) {
-  console.log(movies);
   const allMovies = movies.map(
     ({ poster_path, release_date, original_title, title, genre_ids }, idx) => {
       let { poster, releaseYear } = checkDataBeforeRender(
