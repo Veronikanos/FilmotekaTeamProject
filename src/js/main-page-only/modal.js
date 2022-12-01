@@ -1,12 +1,14 @@
-import { watchTrailer } from './trailer';
+import { watchTrailer } from '../trailer';
 
 const cardDivs = document.querySelector('.main-section__allcards');
 const modal = document.querySelector('.modal');
 const overflow = document.querySelector('.overflow');
 const closeBtn = document.querySelector('.modal__close-btn');
 const innerModal = document.querySelector('.modal__main');
-const queue = [];
-const watched = [];
+const queueJSON = localStorage.getItem('queue');
+const watchedJSON = localStorage.getItem('watched');
+const queue = JSON.parse(queueJSON) || [];
+const watched = JSON.parse(watchedJSON) || [];
 
 function updateMoviesList() {
   const allMoviesListFromStorage = localStorage.getItem('currentFilmList');

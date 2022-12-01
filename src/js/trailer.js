@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { showModal } from './modal';
+import { showModal } from './main-page-only/modal';
 
 const trailerOverflow = document.querySelector('#trailerOverflow');
 const trailerModal = document.querySelector('#trailerModal');
