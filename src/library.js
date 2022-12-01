@@ -1,6 +1,7 @@
 import Pagination from 'tui-pagination';
 import MoviesApiService from './js/api-service';
 
+
 const options = {
   totalItems: 400,
   template: {
@@ -24,3 +25,4 @@ pagination.on('afterMove', function (eventData) {
 });
 
 import './js/library-page-only/filter';
+
