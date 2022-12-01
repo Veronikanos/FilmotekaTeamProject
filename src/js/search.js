@@ -1,7 +1,8 @@
 import Notiflix from 'notiflix';
+import { refs } from './refs';
 import { renderSearchResult } from './render-markup';
 import { moviesApiService } from './init';
-import { refs } from './refs';
+import { createPagination } from './main-page-only/pagination';
 
 refs.headerFormInput.addEventListener('submit', onSubmitSearchForm);
 
@@ -11,24 +12,30 @@ async function onSubmitSearchForm(event) {
     moviesApiService.query = event.target.elements.searchQuery.value
       .trim()
       .toLowerCase();
+
     if (moviesApiService.searchQuery === '') {
-      noResultsText.classList.remove('visually-hidden');
+      refs.noResultsText.classList.remove('visually-hidden');
       return;
+    } else {
+      refs.noResultsText.classList.add('visually-hidden');
     }
-    noResultsText.classList.add('visually-hidden');
-    // moviesApiService.resetPage();
+
+    moviesApiService.resetPage();
     const films = await moviesApiService.fetchMoviesByKeyword();
 
-    // if (films.length === 0) {
-    //   console.log('films.length === 0');
-    // }
+    if (films.data.total_results === 0) {
+      refs.noResultsText.classList.remove('visually-hidden');
+      refs.headerFormInput.reset();
+      return;
+    }
+
     refs.allCardsSection.innerHTML = '';
     refs.allCardsSection.insertAdjacentHTML(
       'beforeend',
       renderSearchResult(films.data.results).join('')
     );
-
     refs.headerFormInput.reset();
+    setTimeout(createPagination('search'), 0);
   } catch (error) {
     Notiflix.Notify.failure(error);
   }

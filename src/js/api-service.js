@@ -1,4 +1,5 @@
 import { hideSpinner, showSpinner } from './spinner';
+import { createPagination } from './main-page-only/pagination';
 
 const axios = require('axios').default;
 
@@ -30,6 +31,10 @@ export default class MoviesApiService {
         'currentFilmList',
         JSON.stringify(result.data.results)
       );
+      localStorage.setItem(
+        'totalResults',
+        JSON.stringify(result.data.total_results)
+      );
       hideSpinner();
       return result;
     } catch (error) {
@@ -46,6 +51,10 @@ export default class MoviesApiService {
       localStorage.setItem(
         'currentFilmList',
         JSON.stringify(result.data.results)
+      );
+      localStorage.setItem(
+        'totalResults',
+        JSON.stringify(result.data.total_results)
       );
       hideSpinner();
       return result;
