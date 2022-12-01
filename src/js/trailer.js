@@ -1,12 +1,14 @@
 import axios from 'axios';
-import { showModal } from './main-page-only/modal';
+import { refs } from './refs';
 
-const trailerOverflow = document.querySelector('#trailerOverflow');
-const trailerModal = document.querySelector('#trailerModal');
-const trailerDiv = document.querySelector('#trailerDiv');
-const modal = document.querySelector('.modal');
-const overflow = document.querySelector('.overflow');
-const trailerCloseBtn = document.querySelector('#trailerClose');
+const {
+  trailerOverflow,
+  trailerModal,
+  trailerDiv,
+  trailerCloseBtn,
+  modal,
+  overflow,
+} = refs;
 
 export async function watchTrailer(e) {
   modal.classList.add('move-left');

@@ -2,7 +2,6 @@ import { renderSearchResult } from './render-markup';
 import { moviesApiService } from './init';
 import { refs } from './refs';
 
-console.log(refs);
 export async function onLoadedHomePage() {
   const genres = await moviesApiService.getGenres(); // Отримання всіх жанрів
   localStorage.setItem('allGenres', JSON.stringify(genres)); // Запис всіх жанрів у localStorage

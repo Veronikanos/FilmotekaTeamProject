@@ -7,4 +7,10 @@ export const refs = {
   innerModal: document.querySelector('.modal__main'),
   watchedBtn: document.querySelector('.watchedJS'),
   queueBtn: document.querySelector('.queueJS'),
+  paginationContainer: document.querySelector('.tui-pagination'),
+  spinner: document.querySelector('.sk-chase'),
+  trailerOverflow: document.querySelector('#trailerOverflow'),
+  trailerModal: document.querySelector('#trailerModal'),
+  trailerDiv: document.querySelector('#trailerDiv'),
+  trailerCloseBtn: document.querySelector('#trailerClose'),
 };

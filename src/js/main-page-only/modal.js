@@ -1,22 +1,20 @@
 import { watchTrailer } from '../trailer';
+import { refs } from '../refs';
 
-const cardDivs = document.querySelector('.main-section__allcards');
-const modal = document.querySelector('.modal');
-const overflow = document.querySelector('.overflow');
-const closeBtn = document.querySelector('.modal__close-btn');
-const innerModal = document.querySelector('.modal__main');
+const { allCardsSection, modal, overflow, closeBtn, innerModal } = refs;
+
 const queueJSON = localStorage.getItem('queue');
 const watchedJSON = localStorage.getItem('watched');
 const queue = JSON.parse(queueJSON) || [];
 const watched = JSON.parse(watchedJSON) || [];
+
+allCardsSection.addEventListener('click', showModal);
 
 function updateMoviesList() {
   const allMoviesListFromStorage = localStorage.getItem('currentFilmList');
   const allMoviesList = JSON.parse(allMoviesListFromStorage);
   return allMoviesList;
 }
-
-cardDivs.addEventListener('click', showModal);
 
 function addToWatched(e) {
   e.target.classList.add('active');
@@ -46,7 +44,7 @@ export function showModal(e) {
   if (e.currentTarget !== e.target) {
     modal.classList.remove('visually-hidden');
     overflow.classList.remove('visually-hidden');
-    cardDivs.removeEventListener('click', showModal);
+    allCardsSection.removeEventListener('click', showModal);
     document.addEventListener('keydown', closeModalOnEsc);
     closeBtn.addEventListener('click', closeModal);
     overflow.addEventListener('click', closeModalOverflow);
@@ -68,7 +66,7 @@ function closeModalOnEsc(e) {
 function closeModal() {
   modal.classList.add('visually-hidden');
   overflow.classList.add('visually-hidden');
-  cardDivs.addEventListener('click', showModal);
+  allCardsSection.addEventListener('click', showModal);
   document.removeEventListener('keydown', closeModal);
   closeBtn.removeEventListener('click', closeModal);
   overflow.removeEventListener('click', closeModalOverflow);
