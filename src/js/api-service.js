@@ -1,4 +1,5 @@
 import { hideSpinner, showSpinner } from './spinner';
+import { createPagination } from './main-page-only/pagination';
 
 const axios = require('axios').default;
 
@@ -35,6 +36,7 @@ export default class MoviesApiService {
         JSON.stringify(result.data.total_results)
       );
       hideSpinner();
+      createPagination('trending');
       return result;
     } catch (error) {
       console.log(error);
@@ -56,6 +58,7 @@ export default class MoviesApiService {
         JSON.stringify(result.data.total_results)
       );
       hideSpinner();
+      createPagination('search');
       return result;
     } catch (error) {
       console.log(error);

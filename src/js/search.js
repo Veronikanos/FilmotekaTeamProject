@@ -1,7 +1,6 @@
 import Notiflix from 'notiflix';
 import { renderSearchResult } from './render-markup';
 import { moviesApiService } from './init';
-import { createPagination } from './main-page-only/pagination';
 
 const headerFormInput = document.querySelector('form.header__form');
 
@@ -32,7 +31,6 @@ async function onSubmitSearchForm(event) {
       'beforeend',
       renderSearchResult(films.data.results).join('')
     );
-    createPagination('search');
     headerFormInput.reset();
   } catch (error) {
     Notiflix.Notify.failure(error);
