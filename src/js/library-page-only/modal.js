@@ -12,22 +12,24 @@ const watched = JSON.parse(watchedJSON) || [];
 const watchedBtn = document.querySelector('.watchedJS');
 const queueBtn = document.querySelector('.queueJS');
 
-const allMoviesListFromStorage = localStorage.getItem('watched');
-let allMoviesList = JSON.parse(allMoviesListFromStorage);
+let allMoviesList = updateMoviesList('watched');
 
-watchedBtn.addEventListener('click', updateMoviesList('watched'));
-queueBtn.addEventListener('click', updateMoviesList('queue'));
+watchedBtn.addEventListener('click', () => {
+  allMoviesList = updateMoviesList('watched');
+});
+queueBtn.addEventListener('click', () => {
+  allMoviesList = updateMoviesList('queue');
+});
 cardDivs.addEventListener('click', showModal);
 
 function updateMoviesList(item) {
   const allMoviesListFromStorage = localStorage.getItem(item);
-  allMoviesList = JSON.parse(allMoviesListFromStorage);
+  return JSON.parse(allMoviesListFromStorage);
 }
 
 function addToWatched(e) {
   e.target.classList.add('active');
-  const currentList = updateMoviesList();
-  const clickedFilm = currentList[e.target.dataset.id];
+  const clickedFilm = allMoviesList[e.target.dataset.id];
   if (watched.find(film => film.id === clickedFilm.id)) {
     alert('Film already in the watched list!');
   } else {
@@ -39,8 +41,7 @@ function addToWatched(e) {
 
 function addToQueue(e) {
   e.target.classList.add('active');
-  const currentList = updateMoviesList();
-  const clickedFilm = currentList[e.target.dataset.id];
+  const clickedFilm = allMoviesList[e.target.dataset.id];
   if (queue.find(film => film.id === clickedFilm.id)) {
     alert('Film already in the queue!');
   } else {
@@ -58,9 +59,11 @@ export function showModal(e) {
     document.addEventListener('keydown', closeModalOnEsc);
     closeBtn.addEventListener('click', closeModal);
     overflow.addEventListener('click', closeModalOverflow);
+
     const id = e.target.parentElement.dataset.id
       ? e.target.parentElement.dataset.id
       : e.target.parentElement.parentElement.dataset.id;
+
     createModal(id);
   }
 }
@@ -94,6 +97,7 @@ function createModal(id) {
     overview,
     id: film_id,
   } = allMoviesList[id];
+  console.log(allMoviesList);
   const genres = JSON.parse(localStorage.getItem('allGenres'));
   const finalGenres = [];
   genre_ids.forEach(idx => {
