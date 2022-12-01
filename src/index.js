@@ -4,3 +4,4 @@ import './js/render-markup';
 import './js/modal';
 
 import './js/search';
+import './js/pagination';
