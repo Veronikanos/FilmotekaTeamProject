@@ -19,7 +19,7 @@ function renderQueue(event) {
 function renderData(DATA_KEY) {
   let dataToRender = JSON.parse(localStorage.getItem(DATA_KEY));
   const markup = renderSearchResult(dataToRender);
-  cardsRenderDivRef.innerHTML = markup.join();
+  cardsRenderDivRef.innerHTML = markup.join('');
 }
 
 watchedButRef.addEventListener('click', renderWatched);
