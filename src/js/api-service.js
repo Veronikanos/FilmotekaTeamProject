@@ -31,8 +31,8 @@ export default class MoviesApiService {
         JSON.stringify(result.data.results)
       );
       localStorage.setItem(
-        'totalPages',
-        JSON.stringify(result.data.total_pages)
+        'totalResults',
+        JSON.stringify(result.data.total_results)
       );
       hideSpinner();
       return result;
@@ -52,8 +52,8 @@ export default class MoviesApiService {
         JSON.stringify(result.data.results)
       );
       localStorage.setItem(
-        'totalPages',
-        JSON.stringify(result.data.total_pages)
+        'totalResults',
+        JSON.stringify(result.data.total_results)
       );
       hideSpinner();
       return result;

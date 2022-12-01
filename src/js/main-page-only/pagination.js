@@ -3,10 +3,11 @@ import MoviesApiService from '../api-service';
 import { renderSearchResult } from '../render-markup';
 
 export function createPagination() {
-  const totalPages = localStorage.getItem('totalPages');
+  const totalResults = localStorage.getItem('totalResults');
 
   const options = {
-    totalItems: JSON.parse(totalPages),
+    totalItems: JSON.parse(totalResults),
+    itemsPerPage: 20,
     template: {
       page: '<a href="#" class="main-section__page-number">{{page}}</a>',
       currentPage:
@@ -19,7 +20,7 @@ export function createPagination() {
 
   const paginationContainer = document.querySelector('.tui-pagination');
   const pagination = new Pagination(paginationContainer, options);
-
+  console.log(pagination);
   pagination.on('afterMove', async function (eventData) {
     const paginatedMovieApiService = new MoviesApiService();
     paginatedMovieApiService.page = eventData.page;
