@@ -5,10 +5,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-
-
-
-
 }
 
 .home {
@@ -131,16 +127,35 @@
   font-weight: 400;
   line-height: calc(16.5 / 14);
   color: #fff;
+  max-width: 280px;
+  margin: 0 auto;
 
   @include tablet {
+    max-width: 336px;
     line-height: calc(16 / 14);
   }
+
+  @include desktop {
+    max-width: 394px;
+  }
+
+
 }
 
 .header__form {
   font-size: inherit;
   text-align: center;
   position: relative;
+  max-width: 280px;
+  margin: 0 auto;
+
+  @include tablet {
+    max-width: 336px;
+  }
+
+  @include desktop {
+    max-width: 394px;
+  }
 
   &-input {
     background: transparent;
@@ -150,6 +165,7 @@
     outline: none;
     caret-color: $white-color;
 
+
     &::placeholder {
       color: $white-color;
     }
@@ -158,34 +174,22 @@
       color: $white-color;
     }
 
-    @include tablet {
-      width: 336px;
-    }
 
-    @include desktop {
-      width: 394px;
-    }
   }
 
+
+
   &-button {
+
     background: transparent;
     border: none;
     position: absolute;
-    right: -10px;
+    top: 0;
+    right: -8px;
     cursor: pointer;
-
-    @include tablet {
-      right: 50%;
-      transform: translateX(172px);
-    }
-
-    @include desktop {
-      transform: translateX(197px);
-    }
-
-    &::before {
-      content: '🍳';
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &-warning {
@@ -199,6 +203,8 @@
     }
   }
 }
+
+
 
 .buttons-wrapper {
   display: flex;
