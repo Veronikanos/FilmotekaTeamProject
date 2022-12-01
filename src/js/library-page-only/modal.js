@@ -9,14 +9,20 @@ const queueJSON = localStorage.getItem('queue');
 const watchedJSON = localStorage.getItem('watched');
 const queue = JSON.parse(queueJSON) || [];
 const watched = JSON.parse(watchedJSON) || [];
+const watchedBtn = document.querySelector('.watchedJS');
+const queueBtn = document.querySelector('.queueJS');
 
-function updateMoviesList() {
-  const allMoviesListFromStorage = localStorage.getItem('watched');
-  const allMoviesList = JSON.parse(allMoviesListFromStorage);
-  return allMoviesList;
-}
+const allMoviesListFromStorage = localStorage.getItem('watched');
+let allMoviesList = JSON.parse(allMoviesListFromStorage);
 
+watchedBtn.addEventListener('click', updateMoviesList('watched'));
+queueBtn.addEventListener('click', updateMoviesList('queue'));
 cardDivs.addEventListener('click', showModal);
+
+function updateMoviesList(item) {
+  const allMoviesListFromStorage = localStorage.getItem(item);
+  allMoviesList = JSON.parse(allMoviesListFromStorage);
+}
 
 function addToWatched(e) {
   e.target.classList.add('active');
@@ -76,8 +82,7 @@ function closeModal() {
   overflow.removeEventListener('click', closeModalOverflow);
 }
 
-async function createModal(id) {
-  const currentList = updateMoviesList();
+function createModal(id) {
   const {
     poster_path,
     original_title,
@@ -88,12 +93,13 @@ async function createModal(id) {
     popularity,
     overview,
     id: film_id,
-  } = currentList[id];
+  } = allMoviesList[id];
   const genres = JSON.parse(localStorage.getItem('allGenres'));
   const finalGenres = [];
   genre_ids.forEach(idx => {
     finalGenres.push(genres.find(genre => genre.id === idx).name);
   });
+
   const markup = `<div class="modal__img">
       <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
     </div>
@@ -139,9 +145,11 @@ async function createModal(id) {
 
     `;
   innerModal.innerHTML = markup;
+
   const addToWatchedBtn = document.querySelector('.modal__btn-watched');
   const addToQueueBtn = document.querySelector('.modal__btn-queue');
   const watchTrailerBtn = document.querySelector('.modal_btn-watch-trailer');
+
   addToQueueBtn.addEventListener('click', addToQueue);
   addToWatchedBtn.addEventListener('click', addToWatched);
   watchTrailerBtn.addEventListener('click', watchTrailer);
