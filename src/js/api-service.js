@@ -30,6 +30,10 @@ export default class MoviesApiService {
         'currentFilmList',
         JSON.stringify(result.data.results)
       );
+      localStorage.setItem(
+        'totalPages',
+        JSON.stringify(result.data.total_pages)
+      );
       hideSpinner();
       return result;
     } catch (error) {
@@ -46,6 +50,10 @@ export default class MoviesApiService {
       localStorage.setItem(
         'currentFilmList',
         JSON.stringify(result.data.results)
+      );
+      localStorage.setItem(
+        'totalPages',
+        JSON.stringify(result.data.total_pages)
       );
       hideSpinner();
       return result;
