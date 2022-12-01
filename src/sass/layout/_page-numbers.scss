@@ -1,0 +1,107 @@
+.tui-pagination {
+  cursor: pointer;
+}
+
+.main-section__arrow {
+  background-color: $background-highlight-color;
+}
+
+.tui-next-is-ellip,
+.tui-prev-is-ellip {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+// .tui-last-child {
+//   position: relative;
+//   right: 42px;
+// }
+
+.main-section {
+  &__arrows {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+
+    &--prev {
+      background-image: url(../images/arrow-left.jpg);
+    }
+    &--next {
+      background-image: url(../images/arrow-right.jpg);
+    }
+    &--first,
+    &--last {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+  }
+
+  &__page-numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 40px;
+  }
+
+  &__page-number {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &--active {
+      background-color: $accent-color;
+      color: $white-color;
+    }
+
+    &--edge {
+      display: none;
+
+      @include tablet {
+        display: grid;
+      }
+    }
+  }
+}
+
+.move-left-a-little {
+  @include tablet {
+    position: relative;
+    right: 40px;
+  }
+}
+.move-right-a-little {
+  @include tablet {
+    position: relative;
+    left: 60px;
+  }
+}
+
+.main-section__arrows--first {
+  display: none;
+  @include tablet {
+    position: relative;
+    left: 50px;
+    display: grid;
+    place-items: center;
+  }
+}
+.main-section__arrows--last {
+  display: none;
+  @include tablet {
+    position: relative;
+    right: 40px;
+    display: grid;
+    place-items: center;
+  }
+}
