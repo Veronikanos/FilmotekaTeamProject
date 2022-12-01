@@ -12,17 +12,23 @@ async function onSubmitSearchForm(event) {
     moviesApiService.query = event.target.elements.searchQuery.value
       .trim()
       .toLowerCase();
+
     if (moviesApiService.searchQuery === '') {
       refs.noResultsText.classList.remove('visually-hidden');
       return;
+    } else {
+      refs.noResultsText.classList.add('visually-hidden');
     }
-    refs.noResultsText.classList.add('visually-hidden');
-    // moviesApiService.resetPage();
+
+    moviesApiService.resetPage();
     const films = await moviesApiService.fetchMoviesByKeyword();
 
-    // if (films.length === 0) {
-    //   console.log('films.length === 0');
-    // }
+    if (films.data.total_results === 0) {
+      refs.noResultsText.classList.remove('visually-hidden');
+      refs.headerFormInput.reset();
+      return;
+    }
+
     refs.allCardsSection.innerHTML = '';
     refs.allCardsSection.insertAdjacentHTML(
       'beforeend',
