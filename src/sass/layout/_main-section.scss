@@ -118,3 +118,12 @@
     stroke: $white-color;
   }
 }
+
+.rating-span {
+  color: $white-color;
+  background-color: $accent-color;
+
+  padding: 3px 8px;
+  margin-left: 8px;
+  border-radius: 5px;
+}
