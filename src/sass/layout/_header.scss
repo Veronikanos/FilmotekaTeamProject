@@ -1,10 +1,17 @@
 .header {
+  padding: 40px 20px 92px;
   background-color: black;
   color: $white-color;
 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+
+  @include tablet {
+    padding: 40px 32px 81px;
+  }
+
+
 }
 
 .home {
@@ -68,9 +75,9 @@
   }
 }
 
-.header-container {
-  height: 230px;
-}
+// .header-container {
+//   height: 230px;
+// }
 
 .logo {
   display: flex;
@@ -79,7 +86,7 @@
 }
 
 .nav {
-  padding-top: 40px;
+  //padding-top: 40px;
   margin-bottom: 56px;
   display: flex;
   justify-content: space-between;
@@ -107,9 +114,9 @@
   width: 100%;
   height: 3px;
   left: 0;
-  bottom: -2px;
-  background: $accent-color;
-  border-radius: 2px;
+  bottom: -3px;
+  background: $red-color;
+  //border-radius: 2px;
 }
 
 .website-name {
