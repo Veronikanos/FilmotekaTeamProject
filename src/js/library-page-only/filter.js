@@ -42,6 +42,7 @@ function renderData(DATA_KEY) {
     return;
   }
   const markup = renderSearchResult(dataToRender);
+  console.log(markup);
   cardsRenderDivRef.innerHTML = markup.join('');
 }
 

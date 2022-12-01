@@ -1,20 +1,30 @@
 export function renderSearchResult(movies) {
   console.log(movies);
   const allMovies = movies.map(
-    ({ poster_path, release_date, original_title, title, genre_ids }, idx) => {
+    (
+      {
+        poster_path,
+        release_date,
+        original_title,
+        title,
+        genre_ids,
+        vote_average,
+      },
+      idx
+    ) => {
       let { poster, releaseYear } = checkDataBeforeRender(
         poster_path,
         release_date
       );
 
-      return `<div class="main-section__card" id="${idx}" data-id="${idx}">
+      return `<div class="main-section__card" id="${idx}" data-id="${idx} data-rating="${vote_average}">
             <img
               src="${poster}"
               alt="${title || original_title || ''}"
               class="main-section__image"
               loading="lazy"
             />
-          <p class="main-section__name">
+          <p class="main-section__name" ">
 					${title || original_title || ''} <br />
 					<span class="main-section__description">${findGenres(genre_ids) || 'No Genre'}
 					| ${releaseYear}</span>
