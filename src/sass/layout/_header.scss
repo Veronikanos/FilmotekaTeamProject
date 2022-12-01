@@ -1,11 +1,83 @@
 .header {
+  padding: 40px 20px 92px;
   background-color: black;
   color: $white-color;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  @include tablet {
+    padding: 40px 32px 81px;
+  }
+
+
 }
 
-.header-container {
-  height: 230px;
+.home {
+  background-image: linear-gradient(#00000056, #00000056), url('../images/header/320/header-bg-320-1@1x.jpg');
+
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    background-image: linear-gradient(#00000056, #00000056), url('../images/header/320/header-bg-320-1@2x.jpg');
+  }
+
+  @include tablet {
+    background-image: linear-gradient(#00000056, #00000056), url('../images/header/768/header-bg768-1@1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: linear-gradient(#00000056, #00000056), url('../images/header/768/header-bg768-1@2x.jpg');
+    }
+  }
+
+  @include desktop {
+    background-image:
+      linear-gradient(#00000056, #00000056), url('../images/header/1280/header-bg1280@1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: linear-gradient(#00000056, #00000056), url('../images/header/1280/header-bg1280@2x.jpg');
+    }
+  }
 }
+
+.library {
+  background-image: linear-gradient(#00000056, #00000056), url('../images/library/320/library@1x.jpg');
+
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    background-image: linear-gradient(#00000056, #00000056), url('../images/library/320/library@2x.jpg');
+  }
+
+  @include tablet {
+    background-image: linear-gradient(#00000056, #00000056), url('../images/library/768/library@1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: linear-gradient(#00000056, #00000056), url('../images/library/768/library@2x.jpg');
+    }
+  }
+
+  @include desktop {
+    background-image: linear-gradient(#00000056, #00000056), url('../images/library/1280/library@1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: linear-gradient(#00000056, #00000056), url('../images/library/1280/library@2x.jpg');
+    }
+  }
+}
+
+// .header-container {
+//   height: 230px;
+// }
 
 .logo {
   display: flex;
@@ -14,7 +86,7 @@
 }
 
 .nav {
-  padding-top: 40px;
+  //padding-top: 40px;
   margin-bottom: 56px;
   display: flex;
   justify-content: space-between;
@@ -42,9 +114,9 @@
   width: 100%;
   height: 3px;
   left: 0;
-  bottom: -2px;
-  background: $accent-color;
-  border-radius: 2px;
+  bottom: -3px;
+  background: $red-color;
+  //border-radius: 2px;
 }
 
 .website-name {
@@ -62,16 +134,35 @@
   font-weight: 400;
   line-height: calc(16.5 / 14);
   color: #fff;
+  max-width: 280px;
+  margin: 0 auto;
 
   @include tablet {
+    max-width: 336px;
     line-height: calc(16 / 14);
   }
+
+  @include desktop {
+    max-width: 394px;
+  }
+
+
 }
 
 .header__form {
   font-size: inherit;
   text-align: center;
   position: relative;
+  max-width: 280px;
+  margin: 0 auto;
+
+  @include tablet {
+    max-width: 336px;
+  }
+
+  @include desktop {
+    max-width: 394px;
+  }
 
   &-input {
     background: transparent;
@@ -81,6 +172,7 @@
     outline: none;
     caret-color: $white-color;
 
+
     &::placeholder {
       color: $white-color;
     }
@@ -89,34 +181,22 @@
       color: $white-color;
     }
 
-    @include tablet {
-      width: 336px;
-    }
 
-    @include desktop {
-      width: 394px;
-    }
   }
 
+
+
   &-button {
+
     background: transparent;
     border: none;
     position: absolute;
-    right: -10px;
+    top: 0;
+    right: -8px;
     cursor: pointer;
-
-    @include tablet {
-      right: 50%;
-      transform: translateX(172px);
-    }
-
-    @include desktop {
-      transform: translateX(197px);
-    }
-
-    &::before {
-      content: '🍳';
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &-warning {
@@ -131,10 +211,16 @@
   }
 }
 
+
+
 .buttons-wrapper {
   display: flex;
   justify-content: center;
-  gap: 32px;
+  gap: 20px;
+
+  @include tablet {
+    gap: 32px;
+  }
 
   @include desktop {
     gap: 16px;
