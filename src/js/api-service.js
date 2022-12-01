@@ -24,7 +24,7 @@ export default class MoviesApiService {
     try {
       showSpinner();
       const result = await axios.get(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.API_KEY}&page=${this.page}`
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.API_KEY}&page=${this.page}&include_adult=false`
       );
       localStorage.setItem(
         'currentFilmList',

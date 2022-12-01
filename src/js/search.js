@@ -3,6 +3,7 @@ import { renderSearchResult } from './render-markup';
 import { moviesApiService } from './init';
 
 const headerFormInput = document.querySelector('form.header__form');
+const noResultsText = document.querySelector('.header__form-warning-text');
 
 headerFormInput.addEventListener('submit', onSubmitSearchForm);
 
@@ -13,8 +14,10 @@ async function onSubmitSearchForm(event) {
       .trim()
       .toLowerCase();
     if (moviesApiService.searchQuery === '') {
+      noResultsText.classList.remove('visually-hidden');
       return;
     }
+    noResultsText.classList.add('visually-hidden');
     // moviesApiService.resetPage();
     const films = await moviesApiService.fetchMoviesByKeyword();
 
