@@ -21,7 +21,7 @@ export default class MoviesApiService {
   async fetchTrending() {
     try {
       const result = await axios.get(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.API_KEY}`
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.API_KEY}&page=${this.page}`
       );
       localStorage.setItem(
         'currentFilmList',
@@ -52,8 +52,12 @@ export default class MoviesApiService {
     this.page = 1;
   }
 
-  setPage(num) {
-    this.page = num;
+  set pageNum(newPage) {
+    this.page = newPage;
+  }
+
+  get pageNum() {
+    return this.page;
   }
 
   get query() {
