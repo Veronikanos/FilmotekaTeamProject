@@ -9,6 +9,8 @@
   border: 1px solid $white-color;
   border-radius: 5px;
   text-transform: uppercase;
+  background-color: transparent;
+  color: $white-color;
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -21,10 +23,5 @@
     background-color: $accent-color;
     border-color: $accent-color;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-
-  &.inactive {
-    background-color: transparent;
-    color: $white-color;
   }
 }
