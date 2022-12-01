@@ -9,11 +9,9 @@ import { renderSearchResult } from '../render-markup';
 const DATA_KEY1 = 'watched';
 const DATA_KEY2 = 'queue';
 
-function renderWatched(event) {
-  event.preventDefault();
-
+export function renderWatched() {
   cardsRenderDivRef.innerHTML = '';
-  event.target.classList.add('active');
+  watchedButRef.classList.add('active');
   queuedButRef.classList.remove('active');
 
   if (!localStorage.getItem(DATA_KEY1)) {
@@ -23,10 +21,9 @@ function renderWatched(event) {
   renderData(DATA_KEY1);
 }
 
-function renderQueue(event) {
-  event.preventDefault();
+export function renderQueue() {
   cardsRenderDivRef.innerHTML = '';
-  event.target.classList.add('active');
+  queuedButRef.classList.add('active');
   watchedButRef.classList.remove('active');
 
   if (!localStorage.getItem(DATA_KEY2)) {

@@ -1,5 +1,6 @@
 import { watchTrailer } from '../trailer';
 import { refs } from '../refs';
+import { renderQueue, renderWatched } from './filter';
 
 const {
   allCardsSection,
@@ -32,7 +33,6 @@ function updateMoviesList(item) {
 }
 
 function addToWatched(e) {
-  // e.target.classList.add('active');
   e.target.innerText = 'remove from watched';
   const clickedFilm = allMoviesList[e.target.dataset.id];
   watched.push(clickedFilm);
@@ -51,7 +51,6 @@ function removeFromWatched(e) {
 }
 
 function addToQueue(e) {
-  // e.target.classList.add('active');
   e.target.innerText = 'remove from queue';
   const clickedFilm = allMoviesList[e.target.dataset.id];
   queue.push(clickedFilm);
@@ -101,6 +100,11 @@ function closeModal() {
   document.removeEventListener('keydown', closeModal);
   closeBtn.removeEventListener('click', closeModal);
   overflow.removeEventListener('click', closeModalOverflow);
+  if (queueBtn.classList.contains('active')) {
+    renderQueue();
+  } else {
+    renderWatched();
+  }
 }
 
 function createModal(id) {
