@@ -1,3 +1,5 @@
+import { hideSpinner, showSpinner } from './spinner';
+
 const axios = require('axios').default;
 
 export default class MoviesApiService {
@@ -20,6 +22,7 @@ export default class MoviesApiService {
 
   async fetchTrending() {
     try {
+      showSpinner();
       const result = await axios.get(
         `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.API_KEY}&page=${this.page}`
       );
@@ -27,6 +30,7 @@ export default class MoviesApiService {
         'currentFilmList',
         JSON.stringify(result.data.results)
       );
+      hideSpinner();
       return result;
     } catch (error) {
       console.log(error);
@@ -35,6 +39,7 @@ export default class MoviesApiService {
 
   async fetchMoviesByKeyword() {
     try {
+      showSpinner();
       const result = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&language=en-US&query=${this.query}&page=${this.page}&include_adult=false`
       );
@@ -42,6 +47,7 @@ export default class MoviesApiService {
         'currentFilmList',
         JSON.stringify(result.data.results)
       );
+      hideSpinner();
       return result;
     } catch (error) {
       console.log(error);

@@ -5,3 +5,4 @@ import './js/modal';
 
 import './js/search';
 import './js/main-page-only/pagination';
+import './js/spinner';
