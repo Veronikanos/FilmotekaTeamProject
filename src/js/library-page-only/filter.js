@@ -7,12 +7,20 @@ import { renderSearchResult } from '../render-markup';
 const DATA_KEY1 = 'watched';
 const DATA_KEY2 = 'queue';
 
-const renderData = () => {
-  let dataToRender = JSON.parse(localStorage.getItem(DATA_KEY1));
+function renderWatched(event) {
+  event.preventDefault();
+  renderData(DATA_KEY1);
+}
+function renderQueue(event) {
+  event.preventDefault();
+  renderData(DATA_KEY2);
+}
+
+function renderData(DATA_KEY) {
+  let dataToRender = JSON.parse(localStorage.getItem(DATA_KEY));
   const markup = renderSearchResult(dataToRender);
-  console.log('markup:', markup);
-  cardsRenderDivRef.insertAdjacentHTML('beforeend', markup.join(''));
-  const inputNames = Object.keys(dataToRender);
-  console.log(inputNames);
-};
-renderData();
+  cardsRenderDivRef.innerHTML = markup.join();
+}
+
+watchedButRef.addEventListener('click', renderWatched);
+queuedButRef.addEventListener('click', renderQueue);
