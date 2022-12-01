@@ -1,7 +1,8 @@
 import Notiflix from 'notiflix';
+import { refs } from './refs';
 import { renderSearchResult } from './render-markup';
 import { moviesApiService } from './init';
-import { refs } from './refs';
+import { createPagination } from './main-page-only/pagination';
 
 refs.headerFormInput.addEventListener('submit', onSubmitSearchForm);
 
@@ -12,10 +13,10 @@ async function onSubmitSearchForm(event) {
       .trim()
       .toLowerCase();
     if (moviesApiService.searchQuery === '') {
-      noResultsText.classList.remove('visually-hidden');
+      refs.noResultsText.classList.remove('visually-hidden');
       return;
     }
-    noResultsText.classList.add('visually-hidden');
+    refs.noResultsText.classList.add('visually-hidden');
     // moviesApiService.resetPage();
     const films = await moviesApiService.fetchMoviesByKeyword();
 
@@ -27,8 +28,8 @@ async function onSubmitSearchForm(event) {
       'beforeend',
       renderSearchResult(films.data.results).join('')
     );
-
     refs.headerFormInput.reset();
+    setTimeout(createPagination('search'), 0);
   } catch (error) {
     Notiflix.Notify.failure(error);
   }
