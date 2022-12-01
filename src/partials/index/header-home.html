@@ -18,7 +18,7 @@
     </nav>
     <div class="form-wrapper">
       <form class="header__form">
-        <label>
+        <label class="form__label">
           <input
             type="text"
             name="searchQuery"
@@ -27,7 +27,9 @@
           />
         </label>
         <button type="submit" class="header__form-button">
-          <!-- <i></i> or sprite -->
+          <svg class="form-search-btn" width="15px" height="15px">
+            <use href="./images/sprite.svg#search"></use>
+          </svg>
         </button>
       </form>
       <p class="header__form-warning visually-hidden">
