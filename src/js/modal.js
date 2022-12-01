@@ -38,12 +38,12 @@ function addToQueue(e) {
   }
 }
 
-function showModal(e) {
+export function showModal(e) {
   if (e.currentTarget !== e.target) {
     modal.classList.remove('visually-hidden');
     overflow.classList.remove('visually-hidden');
     cardDivs.removeEventListener('click', showModal);
-    document.addEventListener('keydown', closeModalonEsc);
+    document.addEventListener('keydown', closeModalOnEsc);
     closeBtn.addEventListener('click', closeModal);
     overflow.addEventListener('click', closeModalOverflow);
     const id = e.target.parentElement.dataset.id
@@ -57,7 +57,7 @@ function closeModalOverflow(e) {
   if (e.currentTarget === e.target) closeModal();
 }
 
-function closeModalonEsc(e) {
+function closeModalOnEsc(e) {
   if (e.code === 'Escape') closeModal();
 }
 
