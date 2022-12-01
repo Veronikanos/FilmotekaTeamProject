@@ -47,5 +47,7 @@ function findGenres(ids) {
     let h = genres.find(genre => genre.id === Number(item));
     res.push(h.name);
   }
-  return res.join(', ');
+  const formattedGenres =
+    res.length > 2 ? `${res[0]}, ${res[1]}, Other` : res.join(', ');
+  return formattedGenres;
 }
