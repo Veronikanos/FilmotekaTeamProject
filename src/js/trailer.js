@@ -7,24 +7,24 @@ const trailerDiv = document.querySelector('#trailerDiv');
 const modal = document.querySelector('.modal');
 const overflow = document.querySelector('.overflow');
 const trailerCloseBtn = document.querySelector('#trailerClose');
-const cardDivs = document.querySelector('.main-section__allcards');
 
 export async function watchTrailer(e) {
+  modal.classList.add('move-left');
+  overflow.classList.add('move-left');
+  trailerModal.classList.remove('move-right');
+  trailerOverflow.classList.remove('move-right');
+
   document.addEventListener('keydown', closeTrailerOnEsc);
   overflow.addEventListener('click', closeTrailerOverflow);
-  modal.classList.add('visually-hidden');
-  overflow.classList.add('visually-hidden');
-  trailerModal.classList.remove('visually-hidden');
-  trailerOverflow.classList.remove('visually-hidden');
   trailerCloseBtn.addEventListener('click', closeTrailer);
+
   const trailers = await fetchTrailer(e.target.dataset.id);
   renderTrailer(trailers.data.results[0].key);
-  console.log(trailers.data.results[0].key);
 }
 
 function renderTrailer(key) {
   trailerDiv.innerHTML = `
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe class="trailer__youtube" height="315" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   `;
 }
 
@@ -37,11 +37,21 @@ function closeTrailerOnEsc(e) {
 }
 
 function closeTrailer() {
-  trailerModal.classList.add('visually-hidden');
-  trailerOverflow.classList.add('visually-hidden');
+  trailerModal.classList.add('move-right');
+  trailerOverflow.classList.add('move-right');
+  modal.classList.remove('move-left');
+  overflow.classList.remove('move-left');
+
+  document.removeEventListener('keydown', closeTrailerOnEsc);
+  overflow.removeEventListener('click', closeTrailerOverflow);
   trailerCloseBtn.removeEventListener('click', closeTrailer);
-  cardDivs.addEventListener('click', showModal);
+
+  trailerModal.addEventListener('transitionend', stopVideo);
+}
+
+function stopVideo() {
   trailerDiv.innerHTML = '';
+  trailerModal.removeEventListener('transitionend', stopVideo);
 }
 
 async function fetchTrailer(id) {

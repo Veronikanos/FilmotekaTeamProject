@@ -1,0 +1,24 @@
+#trailerDiv {
+  display: flex;
+}
+
+#trailerModal {
+  background-color: $main-color;
+  transition: transform 1000ms;
+}
+
+#trailerClose {
+  display: grid;
+  place-items: center;
+  background-color: $white-color;
+  border-radius: 100%;
+}
+.trailer__youtube {
+  width: 100%;
+}
+.move-left {
+  transform: translateX(-100vw);
+}
+.move-right {
+  transform: translateX(100vw);
+}
