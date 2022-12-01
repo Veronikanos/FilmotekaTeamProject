@@ -7,7 +7,7 @@ const { paginationContainer, allCardsSection } = refs;
 
 export function createPagination(fetchType) {
   const totalResults = localStorage.getItem('totalResults');
-  
+
   const options = {
     totalItems: JSON.parse(totalResults),
     itemsPerPage: 20,
