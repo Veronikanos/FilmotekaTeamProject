@@ -12,6 +12,7 @@ const DATA_KEY2 = 'queue';
 function renderWatched(event) {
   event.preventDefault();
 
+  cardsRenderDivRef.innerHTML = '';
   event.target.classList.add('active');
   queuedButRef.classList.remove('active');
 
@@ -21,9 +22,11 @@ function renderWatched(event) {
   }
   renderData(DATA_KEY1);
 }
+
 function renderQueue(event) {
   event.preventDefault();
 
+  cardsRenderDivRef.innerHTML = '';
   event.target.classList.add('active');
   watchedButRef.classList.remove('active');
 
