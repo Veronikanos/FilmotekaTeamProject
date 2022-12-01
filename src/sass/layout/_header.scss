@@ -1,6 +1,75 @@
 .header {
   background-color: black;
   color: $white-color;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+
+
+
+}
+
+.home {
+  background-image: linear-gradient(#00000056, #00000056), url('../images/header/320/header-bg-320-1@1x.jpg');
+
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    background-image: linear-gradient(#00000056, #00000056), url('../images/header/320/header-bg-320-1@2x.jpg');
+  }
+
+  @include tablet {
+    background-image: linear-gradient(#00000056, #00000056), url('../images/header/768/header-bg768-1@1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: linear-gradient(#00000056, #00000056), url('../images/header/768/header-bg768-1@2x.jpg');
+    }
+  }
+
+  @include desktop {
+    background-image:
+      linear-gradient(#00000056, #00000056), url('../images/header/1280/header-bg1280@1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: linear-gradient(#00000056, #00000056), url('../images/header/1280/header-bg1280@2x.jpg');
+    }
+  }
+}
+
+.library {
+  background-image: linear-gradient(#00000056, #00000056), url('../images/library/320/library@1x.jpg');
+
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    background-image: linear-gradient(#00000056, #00000056), url('../images/library/320/library@2x.jpg');
+  }
+
+  @include tablet {
+    background-image: linear-gradient(#00000056, #00000056), url('../images/library/768/library@1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: linear-gradient(#00000056, #00000056), url('../images/library/768/library@2x.jpg');
+    }
+  }
+
+  @include desktop {
+    background-image: linear-gradient(#00000056, #00000056), url('../images/library/1280/library@1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: linear-gradient(#00000056, #00000056), url('../images/library/1280/library@2x.jpg');
+    }
+  }
 }
 
 .header-container {
