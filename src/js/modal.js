@@ -1,3 +1,5 @@
+import { watchTrailer } from './trailer';
+
 const cardDivs = document.querySelector('.main-section__allcards');
 const modal = document.querySelector('.modal');
 const overflow = document.querySelector('.overflow');
@@ -79,6 +81,7 @@ async function createModal(id) {
     vote_count,
     popularity,
     overview,
+    id: film_id,
   } = currentList[id];
   const genres = JSON.parse(localStorage.getItem('allGenres'));
   const finalGenres = [];
@@ -112,7 +115,7 @@ async function createModal(id) {
           <div class="modal__item-first">Genre</div>
           <div>${finalGenres.join(', ')}</div>
         </li>
-      </ul>
+      </ul> 
       <div class="modal__about-info">
         <p class="modal__about-headline">About</p>
         <p class="modal__about-text">
@@ -124,6 +127,7 @@ async function createModal(id) {
         add to Watched
       </button>
       <button class="modal__btn-queue interactive-button" data-id=${id}>add to queue</button>
+      <button class='modal_btn-watched interactive-button modal_btn-watch-trailer' data-id=${film_id}>watch trailer</button>
     </div>
     </div>
 
@@ -131,6 +135,8 @@ async function createModal(id) {
   innerModal.innerHTML = marcup;
   const addToWatchedBtn = document.querySelector('.modal__btn-watched');
   const addToQueueBtn = document.querySelector('.modal__btn-queue');
+  const watchTrailerBtn = document.querySelector('.modal_btn-watch-trailer');
   addToQueueBtn.addEventListener('click', addToQueue);
   addToWatchedBtn.addEventListener('click', addToWatched);
+  watchTrailerBtn.addEventListener('click', watchTrailer);
 }
