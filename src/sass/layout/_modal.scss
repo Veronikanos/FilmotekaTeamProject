@@ -124,18 +124,8 @@
   line-height: calc(20 / 12);
 }
 
-.modal__btn-watched {
-  background-color: $accent-color;
-  color: $white-color;
-}
-
 .modal__item-title {
   text-transform: uppercase;
-}
-
-.modal__btn-queue {
-  background-color: transparent;
-  border: 1px solid $main-color;
 }
 
 .modal__close-btn {

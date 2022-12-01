@@ -1,20 +1,21 @@
 .interactive-button {
-  //TODO: we can rename this selector if it needs. These buttons are used inside header and modal
-
-  padding: 13px 46px;
+  padding-top: 13px;
+  padding-bottom: 13px;
   font-size: 12px;
   text-align: center;
   font-weight: $main-font-weight;
   line-height: calc(16 / 12);
-  border: 1px solid $white-color;
+  border: 1px solid $main-color;
   border-radius: 5px;
   text-transform: uppercase;
   background-color: transparent;
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &.white-btn {
+  &.header-btns {
+    padding: 13px 46px;
     color: $white-color;
+    border: 1px solid $white-color;
   }
 
   @mixin desktop {

@@ -17,6 +17,7 @@ function updateMoviesList() {
 cardDivs.addEventListener('click', showModal);
 
 function addToWatched(e) {
+  e.target.classList.add('active');
   const currentList = updateMoviesList();
   const clickedFilm = currentList[e.target.dataset.id];
   if (watched.find(film => film.id === clickedFilm.id)) {
@@ -28,6 +29,7 @@ function addToWatched(e) {
 }
 
 function addToQueue(e) {
+  e.target.classList.add('active');
   const currentList = updateMoviesList();
   const clickedFilm = currentList[e.target.dataset.id];
   if (queue.find(film => film.id === clickedFilm.id)) {

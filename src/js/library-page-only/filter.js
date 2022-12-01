@@ -25,7 +25,6 @@ function renderWatched(event) {
 
 function renderQueue(event) {
   event.preventDefault();
-
   cardsRenderDivRef.innerHTML = '';
   event.target.classList.add('active');
   watchedButRef.classList.remove('active');
