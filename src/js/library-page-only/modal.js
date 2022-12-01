@@ -13,8 +13,8 @@ const {
 
 const queueJSON = localStorage.getItem('queue');
 const watchedJSON = localStorage.getItem('watched');
-const queue = JSON.parse(queueJSON) || [];
-const watched = JSON.parse(watchedJSON) || [];
+let queue = JSON.parse(queueJSON) || [];
+let watched = JSON.parse(watchedJSON) || [];
 
 let allMoviesList = updateMoviesList('watched');
 
@@ -32,25 +32,41 @@ function updateMoviesList(item) {
 }
 
 function addToWatched(e) {
-  e.target.classList.add('active');
+  // e.target.classList.add('active');
+  e.target.innerText = 'remove from watched';
   const clickedFilm = allMoviesList[e.target.dataset.id];
-  if (watched.find(film => film.id === clickedFilm.id)) {
-    alert('Film already in the watched list!');
-  } else {
-    watched.push(clickedFilm);
-    localStorage.setItem('watched', JSON.stringify(watched));
-  }
+  watched.push(clickedFilm);
+  localStorage.setItem('watched', JSON.stringify(watched));
+  e.target.addEventListener('click', removeFromWatched);
+  e.target.removeEventListener('click', addToWatched);
+}
+
+function removeFromWatched(e) {
+  e.target.innerText = 'add to watched';
+  const clickedFilm = allMoviesList[e.target.dataset.id];
+  watched = watched.filter(film => film.id !== clickedFilm.id);
+  localStorage.setItem('watched', JSON.stringify(watched));
+  e.target.removeEventListener('click', removeFromWatched);
+  e.target.addEventListener('click', addToWatched);
 }
 
 function addToQueue(e) {
-  e.target.classList.add('active');
+  // e.target.classList.add('active');
+  e.target.innerText = 'remove from queue';
   const clickedFilm = allMoviesList[e.target.dataset.id];
-  if (queue.find(film => film.id === clickedFilm.id)) {
-    alert('Film already in the queue!');
-  } else {
-    queue.push(clickedFilm);
-    localStorage.setItem('queue', JSON.stringify(queue));
-  }
+  queue.push(clickedFilm);
+  localStorage.setItem('queue', JSON.stringify(queue));
+  e.target.addEventListener('click', removeFromQueue);
+  e.target.removeEventListener('click', addToQueue);
+}
+
+function removeFromQueue(e) {
+  e.target.innerText = 'add to queue';
+  const clickedFilm = allMoviesList[e.target.dataset.id];
+  queue = queue.filter(film => film.id !== clickedFilm.id);
+  localStorage.setItem('queue', JSON.stringify(queue));
+  e.target.removeEventListener('click', removeFromQueue);
+  e.target.addEventListener('click', addToQueue);
 }
 
 export function showModal(e) {
@@ -105,13 +121,27 @@ function createModal(id) {
     finalGenres.push(genres.find(genre => genre.id === idx).name);
   });
 
-  const markup = `<div class="modal__img">
-      <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
-    </div>
-    <div class="modal__about">
-      <div class="modal__headline">${title}</div>
-      <ul class="modal__list">
-        <li class="modal__item">
+  const foundInWatched = watched.find(film => film.id === film_id);
+  const foundInQueue = queue.find(film => film.id === film_id);
+
+  const isInQueue = !!foundInQueue;
+  const isInWatched = !!foundInWatched;
+
+  const queueBtnMarkup = isInQueue
+    ? `<button class="modal__btn-queue interactive-button" data-id=${id}>remove from queue</button>`
+    : `<button class="modal__btn-queue interactive-button" data-id=${id}>add to queue</button>`;
+
+  const watchedBtnMarkup = isInWatched
+    ? `<button class="modal__btn-watched interactive-button" data-id=${id}>
+        remove from Watched
+      </button>`
+    : `<button class="modal__btn-watched interactive-button" data-id=${id}>
+        add to Watched
+      </button>`;
+
+  const voteCount =
+    vote_count && vote_average
+      ? `<li class="modal__item">
           <div class="modal__item-first">Vote / Votes</div>
           <div class="modal__item-votes">
             <span class="modal__item-bg modal__item--accent">${vote_average.toFixed(
@@ -119,43 +149,74 @@ function createModal(id) {
             )}</span> /
             <span class="modal__item-bg modal__item--grey">${vote_count}</span>
           </div>
-        </li>
-        <li class="modal__item">
+        </li>`
+      : '';
+  const popularityMarkup = popularity
+    ? `<li class="modal__item">
           <div class="modal__item-first">Popularity</div>
           <div>${popularity}</div>
-        </li>
-        <li class="modal__item">
-          <div class="modal__item-first">Original Title</div>
-          <div class="modal__item-title">${original_title}</div>
-        </li>
-        <li class="modal__item">
+        </li>`
+    : '';
+  const genresMarkup = finalGenres.length
+    ? `<li class="modal__item">
           <div class="modal__item-first">Genre</div>
           <div>${finalGenres.join(', ')}</div>
-        </li>
-      </ul> 
-      <div class="modal__about-info">
+        </li>`
+    : '';
+  const originalTitleMarkup = original_title
+    ? `<li class="modal__item">
+          <div class="modal__item-first">Original Title</div>
+          <div class="modal__item-title">${original_title}</div>
+        </li>`
+    : '';
+  const overviewMarkup = overview
+    ? `<div class="modal__about-info">
         <p class="modal__about-headline">About</p>
         <p class="modal__about-text">
           ${overview}
         </p>
-      </div>
+      </div>`
+    : '';
+  const photoMarkup = poster_path
+    ? `<div class="modal__img">
+      <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
+    </div>`
+    : '';
+
+  const markup = `${photoMarkup}
+    <div class="modal__about">
+      <div class="modal__headline">${title}</div>
+      <ul class="modal__list">
+        ${voteCount}
+        ${popularityMarkup}
+        ${originalTitleMarkup}
+        ${genresMarkup}
+      </ul> 
+      ${overviewMarkup}
           <div class="modal__buttons">
-      <button class="modal__btn-watched interactive-button" data-id=${id}>
-        add to Watched
-      </button>
-      <button class="modal__btn-queue interactive-button" data-id=${id}>add to queue</button>
+      ${watchedBtnMarkup}
+      ${queueBtnMarkup}
       <button class='modal_btn-watched interactive-button modal_btn-watch-trailer' data-id=${film_id}>watch trailer</button>
     </div>
     </div>
-
     `;
   innerModal.innerHTML = markup;
 
-  const addToWatchedBtn = document.querySelector('.modal__btn-watched');
-  const addToQueueBtn = document.querySelector('.modal__btn-queue');
+  addListeners(isInQueue, isInWatched);
+}
+
+function addListeners(isInQueue, isInWatched) {
+  const watchedBtn = document.querySelector('.modal__btn-watched');
+  const queueBtn = document.querySelector('.modal__btn-queue');
   const watchTrailerBtn = document.querySelector('.modal_btn-watch-trailer');
 
-  addToQueueBtn.addEventListener('click', addToQueue);
-  addToWatchedBtn.addEventListener('click', addToWatched);
+  isInQueue
+    ? queueBtn.addEventListener('click', removeFromQueue)
+    : queueBtn.addEventListener('click', addToQueue);
+
+  isInWatched
+    ? watchedBtn.addEventListener('click', removeFromWatched)
+    : watchedBtn.addEventListener('click', addToWatched);
+
   watchTrailerBtn.addEventListener('click', watchTrailer);
 }
