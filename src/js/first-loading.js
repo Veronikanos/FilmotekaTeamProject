@@ -1,13 +1,12 @@
 import { renderSearchResult } from './render-markup';
 import { moviesApiService } from './init';
+import { refs } from './refs';
 
+console.log(refs);
 export async function onLoadedHomePage() {
-  const allCardsSection = document.querySelector('.main-section__allcards');
-
   const genres = await moviesApiService.getGenres(); // Отримання всіх жанрів
   localStorage.setItem('allGenres', JSON.stringify(genres)); // Запис всіх жанрів у localStorage
-
   const result = await moviesApiService.fetchTrending(); // Запит на отримання трендових фільмів
   const markup = renderSearchResult(result.data.results); // Рендер розмітки
-  allCardsSection.insertAdjacentHTML('beforeend', markup.join(''));
+  refs.allCardsSection.insertAdjacentHTML('beforeend', markup.join(''));
 }

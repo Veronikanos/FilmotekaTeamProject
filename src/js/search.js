@@ -1,11 +1,9 @@
 import Notiflix from 'notiflix';
 import { renderSearchResult } from './render-markup';
 import { moviesApiService } from './init';
+import { refs } from './refs';
 
-const headerFormInput = document.querySelector('form.header__form');
-const noResultsText = document.querySelector('.header__form-warning-text');
-
-headerFormInput.addEventListener('submit', onSubmitSearchForm);
+refs.headerFormInput.addEventListener('submit', onSubmitSearchForm);
 
 async function onSubmitSearchForm(event) {
   event.preventDefault();
@@ -21,21 +19,16 @@ async function onSubmitSearchForm(event) {
     // moviesApiService.resetPage();
     const films = await moviesApiService.fetchMoviesByKeyword();
 
-    if (films.length === 0) {
-      // setStyleError();
-      console.log('films.length === 0');
-    } else {
-      // resetStyleError();
-    }
-    const allCardsSection = document.querySelector('.main-section__allcards');
-    allCardsSection.innerHTML = '';
-
-    allCardsSection.insertAdjacentHTML(
+    // if (films.length === 0) {
+    //   console.log('films.length === 0');
+    // }
+    refs.allCardsSection.innerHTML = '';
+    refs.allCardsSection.insertAdjacentHTML(
       'beforeend',
       renderSearchResult(films.data.results).join('')
     );
 
-    headerFormInput.reset();
+    refs.headerFormInput.reset();
   } catch (error) {
     Notiflix.Notify.failure(error);
   }
