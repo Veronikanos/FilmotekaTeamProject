@@ -1,5 +1,6 @@
 import { renderSearchResult } from './render-markup';
 import { moviesApiService } from './init';
+import { createPagination } from './main-page-only/pagination';
 
 export async function onLoadedHomePage() {
   const allCardsSection = document.querySelector('.main-section__allcards');
@@ -9,5 +10,7 @@ export async function onLoadedHomePage() {
 
   const result = await moviesApiService.fetchTrending(); // Запит на отримання трендових фільмів
   const markup = renderSearchResult(result.data.results); // Рендер розмітки
+  createPagination('trending');
+
   allCardsSection.insertAdjacentHTML('beforeend', markup.join(''));
 }
