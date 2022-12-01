@@ -11,5 +11,5 @@ export async function onLoadedHomePage() {
   const result = await moviesApiService.fetchTrending(); // Запит на отримання трендових фільмів
   const markup = renderSearchResult(result.data.results); // Рендер розмітки
   allCardsSection.insertAdjacentHTML('beforeend', markup.join(''));
-  createPagination();
+  createPagination('trending');
 }

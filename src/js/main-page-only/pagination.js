@@ -1,8 +1,8 @@
 import Pagination from 'tui-pagination';
-import MoviesApiService from '../api-service';
+import { moviesApiService } from '../init';
 import { renderSearchResult } from '../render-markup';
 
-export function createPagination() {
+export function createPagination(fetchType) {
   const totalResults = localStorage.getItem('totalResults');
 
   const options = {
@@ -20,11 +20,13 @@ export function createPagination() {
 
   const paginationContainer = document.querySelector('.tui-pagination');
   const pagination = new Pagination(paginationContainer, options);
-  console.log(pagination);
   pagination.on('afterMove', async function (eventData) {
-    const paginatedMovieApiService = new MoviesApiService();
-    paginatedMovieApiService.page = eventData.page;
-    const movies = await paginatedMovieApiService.fetchTrending();
+    moviesApiService.page = eventData.page;
+    const movies =
+      fetchType === 'trending'
+        ? await moviesApiService.fetchTrending()
+        : await moviesApiService.fetchMoviesByKeyword();
+
     const allCardsSection = document.querySelector('.main-section__allcards');
     allCardsSection.innerHTML = renderSearchResult(movies.data.results).join(
       ''

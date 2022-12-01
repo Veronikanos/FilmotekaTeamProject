@@ -32,7 +32,7 @@ async function onSubmitSearchForm(event) {
       'beforeend',
       renderSearchResult(films.data.results).join('')
     );
-    createPagination();
+    createPagination('search');
     headerFormInput.reset();
   } catch (error) {
     Notiflix.Notify.failure(error);
