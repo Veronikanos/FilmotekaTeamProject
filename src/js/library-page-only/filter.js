@@ -46,12 +46,14 @@ function renderData(DATA_KEY) {
 
   const cards = document.querySelectorAll('.main-section__card');
   cards.forEach(e => {
-    e.lastElementChild.insertAdjacentHTML(
-      'beforeend',
-      `<span class="rating-span">${
-        Math.round(e.dataset.rating * 10) / 10
-      }<span>`
-    );
+    if (e.dataset.rating !== '0') {
+      e.lastElementChild.insertAdjacentHTML(
+        'beforeend',
+        `<span class="rating-span">${
+          Math.round(e.dataset.rating * 10) / 10
+        }<span>`
+      );
+    }
   });
 }
 
