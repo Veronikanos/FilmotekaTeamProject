@@ -46,6 +46,18 @@ function renderData(DATA_KEY) {
   }
   const markup = renderSearchResult(dataToRender);
   cardsRenderDivRef.innerHTML = markup.join('');
+
+  const cards = document.querySelectorAll('.main-section__card');
+  cards.forEach(e => {
+    if (e.dataset.rating !== '0') {
+      e.lastElementChild.insertAdjacentHTML(
+        'beforeend',
+        `<span class="rating-span">${
+          Math.round(e.dataset.rating * 10) / 10
+        }<span>`
+      );
+    }
+  });
 }
 
 function renderDataDefault() {
