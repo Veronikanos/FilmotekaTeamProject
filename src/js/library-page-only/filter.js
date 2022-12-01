@@ -58,5 +58,8 @@ queuedButRef.addEventListener('click', renderQueue);
 
 const cards = document.querySelectorAll('.main-section__card');
 cards.forEach(e => {
-  e.lastElementChild.insertAdjacentHTML('beforeend', `${e.dataset.rating}`);
+  e.lastElementChild.insertAdjacentHTML(
+    'beforeend',
+    `${Math.round(e.dataset.rating * 10) / 10}`
+  );
 });
