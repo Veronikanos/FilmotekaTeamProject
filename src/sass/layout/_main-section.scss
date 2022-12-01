@@ -48,12 +48,16 @@
     margin: 0;
     border-radius: 5px;
 
-    transition-property: box-shadow;
+    transition: $cubic-bezier;
+    transition-property: box-shadow, transform;
     transition-duration: 0.3s;
     transition-delay: 0.05s;
 
     &:hover,
     :focus {
+      transform: scale(1.05);
+      translate: 0 -10px;
+
       box-shadow: 4px 10px 48px 5px rgba(0, 0, 0, 0.8);
       -webkit-box-shadow: 4px 10px 48px 5px rgba(0, 0, 0, 0.8);
       -moz-box-shadow: 4px 10px 48px 5px rgba(0, 0, 0, 0.8);
