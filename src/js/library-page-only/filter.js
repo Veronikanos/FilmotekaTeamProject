@@ -42,7 +42,6 @@ function renderData(DATA_KEY) {
     return;
   }
   const markup = renderSearchResult(dataToRender);
-  console.log(markup);
   cardsRenderDivRef.innerHTML = markup.join('');
 }
 
@@ -56,3 +55,8 @@ renderDataDefault();
 
 watchedButRef.addEventListener('click', renderWatched);
 queuedButRef.addEventListener('click', renderQueue);
+
+const cards = document.querySelectorAll('.main-section__card');
+cards.forEach(e => {
+  e.lastElementChild.insertAdjacentHTML('beforeend', `${e.dataset.rating}`);
+});

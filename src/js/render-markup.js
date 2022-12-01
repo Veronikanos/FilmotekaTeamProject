@@ -17,7 +17,7 @@ export function renderSearchResult(movies) {
         release_date
       );
 
-      return `<div class="main-section__card" id="${idx}" data-id="${idx} data-rating="${vote_average}">
+      return `<div class="main-section__card" id="${idx}" data-id="${idx}" data-rating="${vote_average}">
             <img
               src="${poster}"
               alt="${title || original_title || ''}"
