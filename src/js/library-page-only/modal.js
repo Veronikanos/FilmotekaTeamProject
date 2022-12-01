@@ -1,16 +1,20 @@
 import { watchTrailer } from '../trailer';
+import { refs } from '../refs';
 
-const cardDivs = document.querySelector('.main-section__allcards');
-const modal = document.querySelector('.modal');
-const overflow = document.querySelector('.overflow');
-const closeBtn = document.querySelector('.modal__close-btn');
-const innerModal = document.querySelector('.modal__main');
+const {
+  allCardsSection,
+  modal,
+  overflow,
+  closeBtn,
+  innerModal,
+  watchedBtn,
+  queueBtn,
+} = refs;
+
 const queueJSON = localStorage.getItem('queue');
 const watchedJSON = localStorage.getItem('watched');
 const queue = JSON.parse(queueJSON) || [];
 const watched = JSON.parse(watchedJSON) || [];
-const watchedBtn = document.querySelector('.watchedJS');
-const queueBtn = document.querySelector('.queueJS');
 
 let allMoviesList = updateMoviesList('watched');
 
@@ -20,7 +24,7 @@ watchedBtn.addEventListener('click', () => {
 queueBtn.addEventListener('click', () => {
   allMoviesList = updateMoviesList('queue');
 });
-cardDivs.addEventListener('click', showModal);
+allCardsSection.addEventListener('click', showModal);
 
 function updateMoviesList(item) {
   const allMoviesListFromStorage = localStorage.getItem(item);
@@ -34,7 +38,6 @@ function addToWatched(e) {
     alert('Film already in the watched list!');
   } else {
     watched.push(clickedFilm);
-    console.log(watched);
     localStorage.setItem('watched', JSON.stringify(watched));
   }
 }
@@ -45,7 +48,6 @@ function addToQueue(e) {
   if (queue.find(film => film.id === clickedFilm.id)) {
     alert('Film already in the queue!');
   } else {
-    console.log(queue);
     queue.push(clickedFilm);
     localStorage.setItem('queue', JSON.stringify(queue));
   }
@@ -55,7 +57,7 @@ export function showModal(e) {
   if (e.currentTarget !== e.target) {
     modal.classList.remove('visually-hidden');
     overflow.classList.remove('visually-hidden');
-    cardDivs.removeEventListener('click', showModal);
+    allCardsSection.removeEventListener('click', showModal);
     document.addEventListener('keydown', closeModalOnEsc);
     closeBtn.addEventListener('click', closeModal);
     overflow.addEventListener('click', closeModalOverflow);
@@ -79,7 +81,7 @@ function closeModalOnEsc(e) {
 function closeModal() {
   modal.classList.add('visually-hidden');
   overflow.classList.add('visually-hidden');
-  cardDivs.addEventListener('click', showModal);
+  allCardsSection.addEventListener('click', showModal);
   document.removeEventListener('keydown', closeModal);
   closeBtn.removeEventListener('click', closeModal);
   overflow.removeEventListener('click', closeModalOverflow);
@@ -97,7 +99,6 @@ function createModal(id) {
     overview,
     id: film_id,
   } = allMoviesList[id];
-  console.log(allMoviesList);
   const genres = JSON.parse(localStorage.getItem('allGenres'));
   const finalGenres = [];
   genre_ids.forEach(idx => {
