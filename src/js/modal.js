@@ -90,9 +90,13 @@ async function createModal(id) {
   genre_ids.forEach(idx => {
     finalGenres.push(genres.find(genre => genre.id === idx).name);
   });
-  const voteCount =
-    vote_count && vote_average
-      ? `<li class="modal__item">
+  const marcup = `<div class="modal__img">
+      <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
+    </div>
+    <div class="modal__about">
+      <div class="modal__headline">${title}</div>
+      <ul class="modal__list">
+        <li class="modal__item">
           <div class="modal__item-first">Vote / Votes</div>
           <div class="modal__item-votes">
             <span class="modal__item-bg modal__item--accent">${vote_average.toFixed(
@@ -100,49 +104,26 @@ async function createModal(id) {
             )}</span> /
             <span class="modal__item-bg modal__item--grey">${vote_count}</span>
           </div>
-        </li>`
-      : '';
-  const popularityMarkup = popularity
-    ? `<li class="modal__item">
+        </li>
+        <li class="modal__item">
           <div class="modal__item-first">Popularity</div>
           <div>${popularity}</div>
-        </li>`
-    : '';
-  const genresMarkup = finalGenres.length
-    ? `<li class="modal__item">
-          <div class="modal__item-first">Genre</div>
-          <div>${finalGenres.join(', ')}</div>
-        </li>`
-    : '';
-  const originalTitleMarkup = original_title
-    ? `<li class="modal__item">
+        </li>
+        <li class="modal__item">
           <div class="modal__item-first">Original Title</div>
           <div class="modal__item-title">${original_title}</div>
-        </li>`
-    : '';
-  const overviewMarkup = overview
-    ? `<div class="modal__about-info">
+        </li>
+        <li class="modal__item">
+          <div class="modal__item-first">Genre</div>
+          <div>${finalGenres.join(', ')}</div>
+        </li>
+      </ul> 
+      <div class="modal__about-info">
         <p class="modal__about-headline">About</p>
         <p class="modal__about-text">
           ${overview}
         </p>
-      </div>`
-    : '';
-  const photoMarkup = poster_path
-    ? `<div class="modal__img">
-      <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
-    </div>`
-    : '';
-  const markup = `${photoMarkup}
-    <div class="modal__about">
-      <div class="modal__headline">${title}</div>
-      <ul class="modal__list">
-        ${voteCount}
-        ${popularityMarkup}
-        ${originalTitleMarkup}
-        ${genresMarkup}
-      </ul> 
-      ${overviewMarkup}
+      </div>
           <div class="modal__buttons">
       <button class="modal__btn-watched interactive-button" data-id=${id}>
         add to Watched
@@ -153,7 +134,7 @@ async function createModal(id) {
     </div>
 
     `;
-  innerModal.innerHTML = markup;
+  innerModal.innerHTML = marcup;
   const addToWatchedBtn = document.querySelector('.modal__btn-watched');
   const addToQueueBtn = document.querySelector('.modal__btn-queue');
   const watchTrailerBtn = document.querySelector('.modal_btn-watch-trailer');
