@@ -19,6 +19,8 @@ let watched = JSON.parse(watchedJSON) || [];
 
 let allMoviesList = updateMoviesList('watched');
 
+let shouldRerender = false;
+
 watchedBtn.addEventListener('click', () => {
   allMoviesList = updateMoviesList('watched');
 });
@@ -39,6 +41,7 @@ function addToWatched(e) {
   localStorage.setItem('watched', JSON.stringify(watched));
   e.target.addEventListener('click', removeFromWatched);
   e.target.removeEventListener('click', addToWatched);
+  shouldRerender = true;
 }
 
 function removeFromWatched(e) {
@@ -48,6 +51,7 @@ function removeFromWatched(e) {
   localStorage.setItem('watched', JSON.stringify(watched));
   e.target.removeEventListener('click', removeFromWatched);
   e.target.addEventListener('click', addToWatched);
+  shouldRerender = true;
 }
 
 function addToQueue(e) {
@@ -57,6 +61,7 @@ function addToQueue(e) {
   localStorage.setItem('queue', JSON.stringify(queue));
   e.target.addEventListener('click', removeFromQueue);
   e.target.removeEventListener('click', addToQueue);
+  shouldRerender = true;
 }
 
 function removeFromQueue(e) {
@@ -66,6 +71,7 @@ function removeFromQueue(e) {
   localStorage.setItem('queue', JSON.stringify(queue));
   e.target.removeEventListener('click', removeFromQueue);
   e.target.addEventListener('click', addToQueue);
+  shouldRerender = true;
 }
 
 export function showModal(e) {
@@ -100,11 +106,12 @@ function closeModal() {
   document.removeEventListener('keydown', closeModal);
   closeBtn.removeEventListener('click', closeModal);
   overflow.removeEventListener('click', closeModalOverflow);
-  if (queueBtn.classList.contains('active')) {
+  if (queueBtn.classList.contains('active') && shouldRerender) {
     renderQueue();
-  } else {
+  } else if (shouldRerender) {
     renderWatched();
   }
+  shouldRerender = false;
 }
 
 function createModal(id) {
