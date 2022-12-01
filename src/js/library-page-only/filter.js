@@ -54,5 +54,13 @@ function renderData(DATA_KEY) {
   cardsRenderDivRef.innerHTML = markup.join('');
 }
 
+function renderDataDefault() {
+  renderData(DATA_KEY1);
+  watchedButRef.classList.remove('inactive');
+  watchedButRef.classList.add('active');
+}
+
+renderDataDefault();
+
 watchedButRef.addEventListener('click', renderWatched);
 queuedButRef.addEventListener('click', renderQueue);
