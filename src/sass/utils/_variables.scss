@@ -1,3 +1,4 @@
+// colors
 $main-color: black;
 $white-color: white;
 $background-highlight-color: #f7f7f7;
@@ -7,5 +8,9 @@ $red-color: #ff001b;
 $grey-color: #8c8c8c;
 $transition-style: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
+// fonts
 $main-font: 'Roboto', sans-serif;
 $main-font-weight: 500;
+
+//  animation
+$cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
