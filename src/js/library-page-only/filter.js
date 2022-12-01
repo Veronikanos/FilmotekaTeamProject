@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 const watchedButRef = document.querySelector('.watchedJS');
 const queuedButRef = document.querySelector('.queueJS');
 
@@ -32,6 +34,9 @@ function renderQueue(event) {
 
 function renderData(DATA_KEY) {
   let dataToRender = JSON.parse(localStorage.getItem(DATA_KEY));
+  if (!dataToRender) {
+    return Notiflix.Notify.warning('No movies added!');
+  }
   const markup = renderSearchResult(dataToRender);
   cardsRenderDivRef.innerHTML = markup.join('');
 }
