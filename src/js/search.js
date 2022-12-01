@@ -31,7 +31,6 @@ async function onSubmitSearchForm(event) {
       'beforeend',
       renderSearchResult(films.data.results).join('')
     );
-
     headerFormInput.reset();
   } catch (error) {
     Notiflix.Notify.failure(error);
