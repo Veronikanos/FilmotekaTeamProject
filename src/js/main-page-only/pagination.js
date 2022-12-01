@@ -1,6 +1,6 @@
 import Pagination from 'tui-pagination';
-import MoviesApiService from './api-service';
-import { renderSearchResult } from './render-markup';
+import MoviesApiService from '../api-service';
+import { renderSearchResult } from '../render-markup';
 
 const options = {
   totalItems: 200,
