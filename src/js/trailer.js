@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { refs } from './refs';
+import Notiflix from 'notiflix';
 
 const {
   trailerOverflow,
@@ -11,17 +12,21 @@ const {
 } = refs;
 
 export async function watchTrailer(e) {
-  modal.classList.add('move-left');
-  overflow.classList.add('move-left');
-  trailerModal.classList.remove('move-right');
-  trailerOverflow.classList.remove('move-right');
-
-  document.addEventListener('keydown', closeTrailerOnEsc);
-  overflow.addEventListener('click', closeTrailerOverflow);
-  trailerCloseBtn.addEventListener('click', closeTrailer);
-
   const trailers = await fetchTrailer(e.target.dataset.id);
-  renderTrailer(trailers.data.results[0].key);
+  if (!trailers.length) {
+    Notiflix.Notify.failure('This one has no trailer:(');
+  } else {
+    modal.classList.add('move-left');
+    overflow.classList.add('move-left');
+    trailerModal.classList.remove('move-right');
+    trailerOverflow.classList.remove('move-right');
+
+    document.addEventListener('keydown', closeTrailerOnEsc);
+    overflow.addEventListener('click', closeTrailerOverflow);
+    trailerCloseBtn.addEventListener('click', closeTrailer);
+
+    renderTrailer(trailers.data.results[0].key);
+  }
 }
 
 function renderTrailer(key) {
