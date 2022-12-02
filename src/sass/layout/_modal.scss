@@ -1,19 +1,25 @@
 .modal {
   position: fixed;
-  padding: 48px 20px;
+  top: 20px;
 
-  width: 280px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  padding: 48px 20px 40px 20px;
+  width: 285px;
+
+  // display: flex;
+  // flex-direction: column;
+  // gap: 20px;
+
   background-color: $white-color;
   overflow-y: scroll;
-  height: 100%;
+  max-height: calc(100% - 40px);
 
   z-index: 10;
   transition: transform 1000ms, opacity 500ms, scale 500ms;
 
   @include tablet {
+    top: 50%;
+    transform: translateY(-50%);
+
     width: 704px;
     padding: 40px 36px;
   }
@@ -26,6 +32,8 @@
   &__main {
     display: flex;
     flex-direction: column;
+    gap: 20px;
+    align-items: center;
 
     @include tablet {
       flex-direction: row;
@@ -38,10 +46,9 @@
 }
 
 .modal__img {
-  flex-basis: 50%;
-  flex-shrink: 0;
-  margin-bottom: 20px;
-
+  width: 240px;
+  border-radius: 5px;
+  overflow: hidden;
   img {
     width: 240px;
 
