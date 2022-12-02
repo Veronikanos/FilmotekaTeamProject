@@ -52,7 +52,6 @@ a {
   text-decoration: none;
   display: block;
   color: currentColor;
-  // cursor: $cursor-dark;
 }
 
 textarea {
@@ -80,4 +79,12 @@ textarea {
   opacity: 0;
   scale: 0.8;
   pointer-events: none;
+}
+
+.preload * {
+  transition: none !important ;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
 }

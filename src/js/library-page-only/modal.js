@@ -10,6 +10,7 @@ const {
   innerModal,
   watchedBtn,
   queueBtn,
+  cursor,
 } = refs;
 
 const queueJSON = localStorage.getItem('queue');
@@ -230,4 +231,13 @@ function addListeners(isInQueue, isInWatched) {
     : watchedBtn.addEventListener('click', addToWatched);
 
   watchTrailerBtn.addEventListener('click', watchTrailer);
+
+  [watchTrailerBtn, queueBtn, watchTrailerBtn, closeBtn].forEach(btn => {
+    btn.addEventListener('mouseover', () => {
+      cursor.classList.add('hover');
+    });
+    btn.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+    });
+  });
 }

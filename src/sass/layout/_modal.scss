@@ -8,6 +8,7 @@
   gap: 16px;
   background-color: $white-color;
   overflow-y: scroll;
+  height: 100%;
 
   z-index: 10;
   transition: transform 1000ms, opacity 500ms, scale 500ms;
@@ -136,10 +137,6 @@
 
   top: 8px;
   right: 8px;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .modal__buttons {
