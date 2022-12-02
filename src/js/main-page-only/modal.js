@@ -17,7 +17,6 @@ function updateMoviesList() {
 }
 
 function addToWatched(e) {
-  // e.target.classList.add('active');
   e.target.innerText = 'remove from watched';
   const currentList = updateMoviesList();
   const clickedFilm = currentList[e.target.dataset.id];
@@ -38,7 +37,6 @@ function removeFromWatched(e) {
 }
 
 function addToQueue(e) {
-  // e.target.classList.add('active');
   e.target.innerText = 'remove from queue';
   const currentList = updateMoviesList();
   const clickedFilm = currentList[e.target.dataset.id];
@@ -60,8 +58,8 @@ function removeFromQueue(e) {
 
 export function showModal(e) {
   if (e.currentTarget !== e.target) {
-    modal.classList.remove('visually-hidden');
-    overflow.classList.remove('visually-hidden');
+    modal.classList.remove('hidden-modal');
+    overflow.classList.remove('hidden-modal');
     allCardsSection.removeEventListener('click', showModal);
     document.addEventListener('keydown', closeModalOnEsc);
     closeBtn.addEventListener('click', closeModal);
@@ -82,8 +80,8 @@ function closeModalOnEsc(e) {
 }
 
 function closeModal() {
-  modal.classList.add('visually-hidden');
-  overflow.classList.add('visually-hidden');
+  modal.classList.add('hidden-modal');
+  overflow.classList.add('hidden-modal');
   allCardsSection.addEventListener('click', showModal);
   document.removeEventListener('keydown', closeModal);
   closeBtn.removeEventListener('click', closeModal);
