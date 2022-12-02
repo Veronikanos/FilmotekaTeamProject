@@ -1,5 +1,4 @@
-import { watched, queue } from './library-page-only/modal';
-export function renderModal(list, id) {
+export function renderModal(list, id, watched, queue) {
   const {
     poster_path,
     original_title,

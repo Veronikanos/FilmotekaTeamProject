@@ -19,8 +19,8 @@ const {
 const queueJSON = localStorage.getItem('queue');
 const watchedJSON = localStorage.getItem('watched');
 
-export let queue = JSON.parse(queueJSON) || [];
-export let watched = JSON.parse(watchedJSON) || [];
+let queue = JSON.parse(queueJSON) || [];
+let watched = JSON.parse(watchedJSON) || [];
 let allMoviesList = updateMoviesList('watched');
 let shouldRerender = false;
 
@@ -131,7 +131,7 @@ function closeModal() {
 }
 
 function createModal(id) {
-  const rendered = renderModal(allMoviesList, id);
+  const rendered = renderModal(allMoviesList, id, watched, queue);
   innerModal.innerHTML = rendered[0];
   addListeners(rendered[1], rendered[2]);
 }

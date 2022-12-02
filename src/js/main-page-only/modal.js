@@ -104,9 +104,9 @@ function closeModal() {
   body.classList.remove('no-scroll');
 }
 
-async function createModal(id) {
+function createModal(id) {
   const currentList = updateMoviesList();
-  const rendered = renderModal(currentList, id);
+  const rendered = renderModal(currentList, id, watched, queue);
   innerModal.innerHTML = rendered[0];
   addListeners(rendered[1], rendered[2]);
 }
