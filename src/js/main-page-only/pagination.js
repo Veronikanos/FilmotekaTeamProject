@@ -50,7 +50,6 @@ export function createPagination(fetchType) {
 
   const nextArrow = document.querySelector('.main-section__arrows--next');
   if (options.totalItems / 20 > 5 && screen.width > 768) {
-    console.log(screen.width);
     const lastArrow = document.querySelector('.main-section__arrows--last');
     lastArrow.innerText = Math.floor(options.totalItems / 20);
     nextArrow.classList.add('move-right-a-little');
