@@ -16,4 +16,5 @@ export const refs = {
   noResultsText: document.querySelector('.header__form-warning-text'),
   cursor: document.querySelector('.cursor'),
   cursorinner: document.querySelector('.cursor2'),
+  body: document.querySelector('body'),
 };

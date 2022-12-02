@@ -2,7 +2,8 @@ import { watchTrailer } from '../trailer';
 import { refs } from '../refs';
 import Notiflix from 'notiflix';
 
-const { allCardsSection, modal, overflow, closeBtn, innerModal, cursor } = refs;
+const { allCardsSection, modal, overflow, closeBtn, innerModal, cursor, body } =
+  refs;
 
 const queueJSON = localStorage.getItem('queue');
 const watchedJSON = localStorage.getItem('watched');
@@ -65,14 +66,19 @@ export function showModal(e) {
   if (e.currentTarget !== e.target) {
     modal.classList.remove('hidden-modal');
     overflow.classList.remove('hidden-modal');
+
     allCardsSection.removeEventListener('click', showModal);
+
     document.addEventListener('keydown', closeModalOnEsc);
     closeBtn.addEventListener('click', closeModal);
     overflow.addEventListener('click', closeModalOverflow);
+
     const id = e.target.parentElement.dataset.id
       ? e.target.parentElement.dataset.id
       : e.target.parentElement.parentElement.dataset.id;
     createModal(id);
+
+    body.classList.add('no-scroll');
   }
 }
 
@@ -87,10 +93,14 @@ function closeModalOnEsc(e) {
 function closeModal() {
   modal.classList.add('hidden-modal');
   overflow.classList.add('hidden-modal');
+
   allCardsSection.addEventListener('click', showModal);
+
   document.removeEventListener('keydown', closeModal);
   closeBtn.removeEventListener('click', closeModal);
   overflow.removeEventListener('click', closeModalOverflow);
+
+  body.classList.remove('no-scroll');
 }
 
 async function createModal(id) {

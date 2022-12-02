@@ -12,6 +12,7 @@ const {
   watchedBtn,
   queueBtn,
   cursor,
+  body,
 } = refs;
 
 const queueJSON = localStorage.getItem('queue');
@@ -84,6 +85,7 @@ export function showModal(e) {
     modal.classList.remove('hidden-modal');
     overflow.classList.remove('hidden-modal');
     allCardsSection.removeEventListener('click', showModal);
+
     document.addEventListener('keydown', closeModalOnEsc);
     closeBtn.addEventListener('click', closeModal);
     overflow.addEventListener('click', closeModalOverflow);
@@ -93,6 +95,8 @@ export function showModal(e) {
       : e.target.parentElement.parentElement.dataset.id;
 
     createModal(id);
+
+    body.classList.add('no-scroll');
   }
 }
 
@@ -107,16 +111,22 @@ function closeModalOnEsc(e) {
 function closeModal() {
   modal.classList.add('hidden-modal');
   overflow.classList.add('hidden-modal');
+
   allCardsSection.addEventListener('click', showModal);
+
   document.removeEventListener('keydown', closeModal);
   closeBtn.removeEventListener('click', closeModal);
   overflow.removeEventListener('click', closeModalOverflow);
+
   if (queueBtn.classList.contains('active') && shouldRerender) {
     renderQueue();
   } else if (shouldRerender) {
     renderWatched();
   }
+
   shouldRerender = false;
+
+  body.classList.remove('no-scroll');
 }
 
 function createModal(id) {
