@@ -91,12 +91,12 @@ export function showModal(e) {
     closeBtn.addEventListener('click', closeModal);
     overflow.addEventListener('click', closeModalOverflow);
 
-    const id = e.target.parentElement.dataset.id
-      ? e.target.parentElement.dataset.id
-      : e.target.parentElement.parentElement.dataset.id;
+    const id =
+      e.target.nodeName === 'DIV'
+        ? e.target.dataset.id
+        : e.target.closest('div').dataset.id;
 
     createModal(id);
-    console.log('hi');
     body.classList.add('no-scroll');
   }
 }
