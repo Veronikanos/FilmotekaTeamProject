@@ -1,4 +1,4 @@
 const body = document.querySelector('body');
-window.onload(() => {
+window.addEventListener('load', () => {
   body.classList.remove('preload');
 });
