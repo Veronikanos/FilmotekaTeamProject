@@ -88,3 +88,7 @@ textarea {
   -ms-transition: none !important;
   -o-transition: none !important;
 }
+
+.no-scroll {
+  overflow: hidden;
+}

@@ -25,6 +25,7 @@ function addToWatched(e) {
   localStorage.setItem('watched', JSON.stringify(watched));
   e.target.addEventListener('click', removeFromWatched);
   e.target.removeEventListener('click', addToWatched);
+  Notiflix.Notify.success('Added to watched!');
 }
 
 function removeFromWatched(e) {
@@ -35,6 +36,7 @@ function removeFromWatched(e) {
   localStorage.setItem('watched', JSON.stringify(watched));
   e.target.removeEventListener('click', removeFromWatched);
   e.target.addEventListener('click', addToWatched);
+  Notiflix.Notify.success('Removed from watched!');
 }
 
 function addToQueue(e) {
@@ -45,6 +47,7 @@ function addToQueue(e) {
   localStorage.setItem('queue', JSON.stringify(queue));
   e.target.addEventListener('click', removeFromQueue);
   e.target.removeEventListener('click', addToQueue);
+  Notiflix.Notify.success('Added to queue!');
 }
 
 function removeFromQueue(e) {
@@ -55,6 +58,7 @@ function removeFromQueue(e) {
   localStorage.setItem('queue', JSON.stringify(queue));
   e.target.removeEventListener('click', removeFromQueue);
   e.target.addEventListener('click', addToQueue);
+  Notiflix.Notify.success('Removed from queue!');
 }
 
 export function showModal(e) {
