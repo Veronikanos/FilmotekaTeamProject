@@ -25,9 +25,9 @@ export function createPagination(fetchType) {
 
   const pagination = new Pagination(paginationContainer, options);
   pagination.on('afterMove', async function (eventData) {
-    moviesApiService.page = eventData.page;
-    if (eventData.page > 4) {
-      console.log(eventData.page);
+    const { page } = eventData;
+    moviesApiService.page = page;
+    if (page > 4) {
       const firstArrow = document.querySelector('.main-section__arrows--first');
       const prevArrow = document.querySelector('.main-section__arrows--prev');
       firstArrow.innerText = '1';
@@ -46,12 +46,17 @@ export function createPagination(fetchType) {
     allCardsSection.innerHTML = renderSearchResult(movies.data.results).join(
       ''
     );
-  });
 
-  const nextArrow = document.querySelector('.main-section__arrows--next');
-  if (options.totalItems / 20 > 5 && screen.width > 768) {
+    const nextArrow = document.querySelector('.main-section__arrows--next');
+    const totalPages = options.totalItems / 20;
+    console.log(page, totalPages);
     const lastArrow = document.querySelector('.main-section__arrows--last');
-    lastArrow.innerText = Math.floor(options.totalItems / 20);
-    nextArrow.classList.add('move-right-a-little');
-  }
+    if (totalPages > 5 && totalPages > page + 3 && screen.width > 768) {
+      if (lastArrow) lastArrow.innerText = Math.floor(totalPages);
+      if (nextArrow) nextArrow.classList.add('move-right-a-little');
+    } else if (totalPages < page + 3) {
+      if (lastArrow) lastArrow.innerText = '';
+      if (nextArrow) nextArrow.classList.remove('move-right-a-little');
+    }
+  });
 }
