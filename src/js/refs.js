@@ -14,4 +14,6 @@ export const refs = {
   trailerDiv: document.querySelector('#trailerDiv'),
   trailerCloseBtn: document.querySelector('#trailerClose'),
   noResultsText: document.querySelector('.header__form-warning-text'),
+  cursor: document.querySelector('.cursor'),
+  cursorinner: document.querySelector('.cursor2'),
 };

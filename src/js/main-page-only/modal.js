@@ -1,7 +1,7 @@
 import { watchTrailer } from '../trailer';
 import { refs } from '../refs';
 
-const { allCardsSection, modal, overflow, closeBtn, innerModal } = refs;
+const { allCardsSection, modal, overflow, closeBtn, innerModal, cursor } = refs;
 
 const queueJSON = localStorage.getItem('queue');
 const watchedJSON = localStorage.getItem('watched');
@@ -204,4 +204,13 @@ function addListeners(isInQueue, isInWatched) {
     : watchedBtn.addEventListener('click', addToWatched);
 
   watchTrailerBtn.addEventListener('click', watchTrailer);
+
+  [watchTrailerBtn, queueBtn, watchTrailerBtn, closeBtn].forEach(btn => {
+    btn.addEventListener('mouseover', () => {
+      cursor.classList.add('hover');
+    });
+    btn.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+    });
+  });
 }

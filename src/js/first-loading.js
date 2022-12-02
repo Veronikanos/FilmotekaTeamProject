@@ -11,4 +11,13 @@ export async function onLoadedHomePage() {
   createPagination('trending');
 
   refs.allCardsSection.insertAdjacentHTML('beforeend', markup.join(''));
+  const cards = document.querySelectorAll('.main-section__card');
+  cards.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      refs.cursor.classList.add('hover');
+    });
+    item.addEventListener('mouseleave', () => {
+      refs.cursor.classList.remove('hover');
+    });
+  });
 }

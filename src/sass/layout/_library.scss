@@ -1,56 +1,54 @@
-  .main-section {
-      &__rating {
-          padding: 3px 8px;
-          margin-left: 4px;
-          min-width: 40px;
-          font-size: 12px;
-          border-radius: 5px;
-          background-color: $accent-color;
-          color: $white-color;
-      }
-
-      &__arrows {
-          display: grid;
-          place-items: center;
-          width: 40px;
-          height: 40px;
-
-          &--prev {
-            background-image: url(../images/arrow-left.jpg);
-          }
-          &--next {
-            background-image: url(../images/arrow-right.jpg);
-          }
-      }
-
-      &__page-numbers {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 5px;
-          margin-top: 40px;
-      }
-
-      &__page-number {
-          display: grid;
-          place-items: center;
-          width: 40px;
-          height: 40px;
-          border-radius: 5px;
-          cursor: pointer;
-
-          &--active {
-              background-color: $accent-color;
-              color: $white-color;
-          }
-
-          &--edge {
-            display: none;
-
-            @include tablet {
-                display: grid
-            }
-          }
-      }
-
+.main-section {
+  &__rating {
+    padding: 3px 8px;
+    margin-left: 4px;
+    min-width: 40px;
+    font-size: 12px;
+    border-radius: 5px;
+    background-color: $accent-color;
+    color: $white-color;
   }
+
+  &__arrows {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+
+    &--prev {
+      background-image: url(../images/arrow-left.jpg);
+    }
+    &--next {
+      background-image: url(../images/arrow-right.jpg);
+    }
+  }
+
+  &__page-numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 40px;
+  }
+
+  &__page-number {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+
+    &--active {
+      background-color: $accent-color;
+      color: $white-color;
+    }
+
+    &--edge {
+      display: none;
+
+      @include tablet {
+        display: grid;
+      }
+    }
+  }
+}
