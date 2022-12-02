@@ -105,10 +105,16 @@
       background-color: $accent-color;
     }
   }
-}
 
-.main-section__arrow {
-  background-color: $background-highlight-color;
+  &__rating {
+    padding: 3px 8px;
+    margin-left: 4px;
+    min-width: 40px;
+    font-size: 12px;
+    border-radius: 5px;
+    background-color: $accent-color;
+    color: $white-color;
+  }
 }
 
 .icon {
