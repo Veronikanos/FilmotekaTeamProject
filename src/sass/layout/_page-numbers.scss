@@ -1,7 +1,3 @@
-.tui-pagination {
-  cursor: pointer;
-}
-
 .main-section__arrow {
   background-color: $background-highlight-color;
 }
@@ -57,7 +53,6 @@
     width: 40px;
     height: 40px;
     border-radius: 5px;
-    cursor: pointer;
 
     &--active {
       background-color: $accent-color;

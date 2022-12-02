@@ -39,13 +39,5 @@ import { device } from './device-detection';
         cursor.classList.remove('hover');
       });
     });
-
-    const header = document.querySelector('.header');
-    header.addEventListener('mouseover', () => {
-      cursor.classList.add('dark-bcg');
-    });
-    header.addEventListener('mouseleave', () => {
-      cursor.classList.remove('dark-bcg');
-    });
   }
 })();

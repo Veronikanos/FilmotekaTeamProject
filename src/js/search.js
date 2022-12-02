@@ -5,6 +5,12 @@ import { moviesApiService } from './init';
 import { createPagination } from './main-page-only/pagination';
 
 refs.headerFormInput.addEventListener('submit', onSubmitSearchForm);
+refs.headerFormInput.addEventListener('mouseover', () => {
+  refs.cursor.classList.add('hover');
+});
+refs.headerFormInput.addEventListener('mouseleave', () => {
+  refs.cursor.classList.remove('hover');
+});
 
 async function onSubmitSearchForm(event) {
   event.preventDefault();

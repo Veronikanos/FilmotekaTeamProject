@@ -22,6 +22,7 @@ html {
     top: 0;
     transform: translate(calc(-50% + 15px), -50%);
     z-index: 9999;
+    background-color: rgba(255, 255, 255, 0.468);
   }
 }
 
@@ -42,12 +43,6 @@ html {
 .hover {
   @include desktop {
     background-color: #ff6b017d;
-  }
-}
-
-.dark-bcg {
-  @include desktop {
-    background-color: rgba(255, 255, 255, 0.468);
   }
 }
 
