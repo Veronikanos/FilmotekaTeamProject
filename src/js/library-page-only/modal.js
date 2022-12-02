@@ -1,6 +1,7 @@
 import { watchTrailer } from '../trailer';
 import { refs } from '../refs';
 import { renderQueue, renderWatched } from './filter';
+import Notiflix from 'notiflix';
 
 const {
   allCardsSection,
@@ -15,11 +16,10 @@ const {
 
 const queueJSON = localStorage.getItem('queue');
 const watchedJSON = localStorage.getItem('watched');
+
 let queue = JSON.parse(queueJSON) || [];
 let watched = JSON.parse(watchedJSON) || [];
-
 let allMoviesList = updateMoviesList('watched');
-
 let shouldRerender = false;
 
 watchedBtn.addEventListener('click', () => {
@@ -43,6 +43,7 @@ function addToWatched(e) {
   e.target.addEventListener('click', removeFromWatched);
   e.target.removeEventListener('click', addToWatched);
   shouldRerender = true;
+  Notiflix.Notify.success('Added to watched!');
 }
 
 function removeFromWatched(e) {
@@ -53,6 +54,7 @@ function removeFromWatched(e) {
   e.target.removeEventListener('click', removeFromWatched);
   e.target.addEventListener('click', addToWatched);
   shouldRerender = true;
+  Notiflix.Notify.success('Removed from watched!');
 }
 
 function addToQueue(e) {
@@ -63,6 +65,7 @@ function addToQueue(e) {
   e.target.addEventListener('click', removeFromQueue);
   e.target.removeEventListener('click', addToQueue);
   shouldRerender = true;
+  Notiflix.Notify.success('Added to queue!');
 }
 
 function removeFromQueue(e) {
@@ -73,6 +76,7 @@ function removeFromQueue(e) {
   e.target.removeEventListener('click', removeFromQueue);
   e.target.addEventListener('click', addToQueue);
   shouldRerender = true;
+  Notiflix.Notify.success('Removed from queue!');
 }
 
 export function showModal(e) {

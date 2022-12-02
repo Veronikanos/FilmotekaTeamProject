@@ -1,5 +1,6 @@
 import { watchTrailer } from '../trailer';
 import { refs } from '../refs';
+import Notiflix from 'notiflix';
 
 const { allCardsSection, modal, overflow, closeBtn, innerModal, cursor } = refs;
 
