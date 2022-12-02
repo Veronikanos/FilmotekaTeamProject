@@ -205,7 +205,7 @@ function addListeners(isInQueue, isInWatched) {
 
   watchTrailerBtn.addEventListener('click', watchTrailer);
 
-  [watchTrailerBtn, queueBtn, watchTrailerBtn, closeBtn].forEach(btn => {
+  [watchTrailerBtn, queueBtn, watchedBtn, closeBtn].forEach(btn => {
     btn.addEventListener('mouseover', () => {
       cursor.classList.add('hover');
     });
