@@ -37,6 +37,7 @@
 
     @include tablet {
       flex-direction: row;
+      align-items: flex-start;
     }
 
     @include desktop {
@@ -46,38 +47,34 @@
 }
 
 .modal__img {
+  flex-shrink: 0;
   width: 240px;
   border-radius: 5px;
   overflow: hidden;
-  img {
-    width: 240px;
-
-    @include tablet-only {
-      width: 265px;
-    }
-
-    @include desktop {
-      width: 375px;
-    }
+  @include tablet {
+    width: 264px;
+  }
+  @include desktop {
+    width: 375px;
   }
 }
 
 .modal__about {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   gap: 20px;
 }
 
 .modal__list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
 }
 
 .modal__item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+
   line-height: calc(14.06 / 12);
   gap: 41px;
 
@@ -125,11 +122,14 @@
 }
 
 .modal__about-text {
-  margin-top: 8px;
-  margin-bottom: 20px;
-
   font-weight: 500;
   line-height: calc(20 / 12);
+}
+
+.modal__about-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .modal__item-title {
