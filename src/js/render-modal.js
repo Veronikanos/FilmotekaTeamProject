@@ -90,9 +90,11 @@ export function renderModal(list, id, watched, queue) {
       </ul> 
       ${overviewMarkup}
           <div class="modal__buttons">
-      ${watchedBtnMarkup}
-      ${queueBtnMarkup}
-      <button class='modal_btn-watched interactive-button modal_btn-watch-trailer' data-id=${film_id}>watch trailer</button>
+      <div class="modal__add-btns">
+        ${watchedBtnMarkup}
+        ${queueBtnMarkup}
+      </div>
+      <button class='modal_btn-watched interactive-button modal__btn-watch-trailer' data-id=${film_id}>watch trailer</button>
     </div>
     </div>
     `,

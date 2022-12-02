@@ -96,7 +96,7 @@ export function showModal(e) {
       : e.target.parentElement.parentElement.dataset.id;
 
     createModal(id);
-
+    console.log('hi');
     body.classList.add('no-scroll');
   }
 }
@@ -139,7 +139,7 @@ function createModal(id) {
 function addListeners(isInQueue, isInWatched) {
   const watchedBtn = document.querySelector('.modal__btn-watched');
   const queueBtn = document.querySelector('.modal__btn-queue');
-  const watchTrailerBtn = document.querySelector('.modal_btn-watch-trailer');
+  const watchTrailerBtn = document.querySelector('.modal__btn-watch-trailer');
 
   isInQueue
     ? queueBtn.addEventListener('click', removeFromQueue)

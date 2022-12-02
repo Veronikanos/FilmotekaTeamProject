@@ -4,16 +4,13 @@
 
   padding: 48px 20px 40px 20px;
   width: 285px;
-
-  // display: flex;
-  // flex-direction: column;
-  // gap: 20px;
-
-  background-color: $white-color;
-  overflow-y: scroll;
   max-height: calc(100% - 40px);
 
+  background-color: $white-color;
+
+  overflow-y: scroll;
   z-index: 10;
+
   transition: transform 1000ms, opacity 500ms, scale 500ms;
 
   @include tablet {
@@ -38,119 +35,144 @@
     @include tablet {
       flex-direction: row;
       align-items: flex-start;
+      gap: 68px;
     }
 
     @include desktop {
       gap: 16px;
     }
   }
-}
 
-.modal__img {
-  flex-shrink: 0;
-  width: 240px;
-  border-radius: 5px;
-  overflow: hidden;
-  @include tablet {
-    width: 264px;
+  &__img {
+    flex-shrink: 0;
+
+    width: 240px;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    @include tablet {
+      width: 264px;
+    }
+    @include desktop {
+      width: 375px;
+    }
   }
-  @include desktop {
-    width: 375px;
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+
+    line-height: calc(14.06 / 12);
+    gap: 41px;
+
+    @include tablet {
+      gap: 83px;
+    }
+  }
+
+  &__item-first {
+    min-width: 80px;
+    color: $grey-color;
+  }
+
+  &__item-bg {
+    padding: 2px 10px;
+    display: inline-block;
+    border-radius: 5px;
+  }
+
+  &__item--accent {
+    background-color: $accent-color;
+    color: $white-color;
+  }
+
+  &__item--grey {
+    background-color: $background-highlight-color;
+    color: $main-color;
+  }
+
+  &__headline {
+    font-size: 20px;
+    line-height: calc(35.16 / 30);
+
+    @media screen and (min-width: 1024px) {
+      font-size: 30px;
+    }
+  }
+
+  &__about-headline {
+    text-transform: uppercase;
+  }
+
+  &__item-votes {
+    color: $grey-color;
+  }
+
+  &__about-text {
+    font-weight: 500;
+    line-height: calc(20 / 12);
+  }
+
+  &__about-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item-title {
+    text-transform: uppercase;
+  }
+
+  &__close-btn {
+    padding: 0;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+
+    top: 8px;
+    right: 8px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+  &__add-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+  &__btn-watch-trailer {
+    height: 70px;
+
+    @include tablet {
+      height: 44px;
+    }
   }
 }
-
-.modal__about {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.modal__list {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-
-.modal__item {
-  display: flex;
-  align-items: flex-start;
-
-  line-height: calc(14.06 / 12);
-  gap: 41px;
-
-  @include tablet {
-    gap: 83px;
-  }
-}
-
-.modal__item-first {
-  min-width: 80px;
-  color: $grey-color;
-}
-
-.modal__item-bg {
-  padding: 2px 10px;
-  display: inline-block;
-  border-radius: 5px;
-}
-
-.modal__item--accent {
-  background-color: $accent-color;
-  color: $white-color;
-}
-
-.modal__item--grey {
-  background-color: $background-highlight-color;
-  color: $main-color;
-}
-
-.modal__headline {
-  font-size: 20px;
-  line-height: calc(35.16 / 30);
-
-  @media screen and (min-width: 1024px) {
-    font-size: 30px;
-  }
-}
-
-.modal__about-headline {
-  text-transform: uppercase;
-}
-
-.modal__item-votes {
-  color: $grey-color;
-}
-
-.modal__about-text {
-  font-weight: 500;
-  line-height: calc(20 / 12);
-}
-
-.modal__about-info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.modal__item-title {
-  text-transform: uppercase;
-}
-
-.modal__close-btn {
-  padding: 0;
-  position: absolute;
-  background-color: transparent;
-  border: none;
-
-  top: 8px;
-  right: 8px;
-}
-
-.modal__buttons {
-  display: flex;
-  gap: 20px;
-}
-
 .overflow {
   display: grid;
   place-items: center;
