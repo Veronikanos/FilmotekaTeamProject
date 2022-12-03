@@ -96,8 +96,10 @@ export function showModal(e) {
       : e.target.parentElement.parentElement.dataset.id;
 
     createModal(id);
-    console.log('hi');
-    body.classList.add('no-scroll');
+
+    const top = window.scrollY;
+    body.style.position = 'fixed';
+    body.style.top = `-${top}px`;
   }
 }
 
@@ -127,7 +129,10 @@ function closeModal() {
 
   shouldRerender = false;
 
-  body.classList.remove('no-scroll');
+  const top = body.style.top;
+  body.style.position = '';
+  body.style.top = '';
+  window.scrollTo(0, parseInt(top || '0') * -1);
 }
 
 function createModal(id) {
