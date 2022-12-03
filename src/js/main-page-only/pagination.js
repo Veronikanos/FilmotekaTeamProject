@@ -31,11 +31,16 @@ export function createPagination(fetchType) {
       const firstArrow = document.querySelector('.main-section__arrows--first');
       const prevArrow = document.querySelector('.main-section__arrows--prev');
       firstArrow.innerText = '1';
+      firstArrow.style.pointerEvents = 'all';
+
       prevArrow.classList.add('move-left-a-little');
     } else {
       const prevArrow = document.querySelector('.main-section__arrows--prev');
       const firstArrow = document.querySelector('.main-section__arrows--first');
-      if (firstArrow) firstArrow.innerText = '';
+      if (firstArrow) {
+        firstArrow.innerText = '';
+        firstArrow.style.pointerEvents = 'none';
+      }
       if (prevArrow) prevArrow.classList.remove('move-left-a-little');
     }
     const movies =
@@ -49,13 +54,18 @@ export function createPagination(fetchType) {
 
     const nextArrow = document.querySelector('.main-section__arrows--next');
     const totalPages = options.totalItems / 20;
-    console.log(page, totalPages);
     const lastArrow = document.querySelector('.main-section__arrows--last');
     if (totalPages > 5 && totalPages > page + 3 && screen.width > 768) {
-      if (lastArrow) lastArrow.innerText = Math.floor(totalPages);
+      if (lastArrow) {
+        lastArrow.innerText = Math.ceil(totalPages);
+        lastArrow.style.pointerEvents = 'all';
+      }
       if (nextArrow) nextArrow.classList.add('move-right-a-little');
     } else if (totalPages < page + 3) {
-      if (lastArrow) lastArrow.innerText = '';
+      if (lastArrow) {
+        lastArrow.innerText = '';
+        lastArrow.style.pointerEvents = 'none';
+      }
       if (nextArrow) nextArrow.classList.remove('move-right-a-little');
     }
   });
