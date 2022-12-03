@@ -10,7 +10,7 @@ const DATA_KEY1 = 'watched';
 const DATA_KEY2 = 'queue';
 
 export function renderWatched() {
-  cardsRenderDivRef.innerHTML = '';
+  cardsRenderDivRef.innerHTML = `Its empty here, add movies you've already watched.`;
   watchedButRef.classList.add('active');
   queuedButRef.classList.remove('active');
 
@@ -22,7 +22,7 @@ export function renderWatched() {
 }
 
 export function renderQueue() {
-  cardsRenderDivRef.innerHTML = '';
+  cardsRenderDivRef.innerHTML = `It's empty here, add the movies you want to watch.`;
   queuedButRef.classList.add('active');
   watchedButRef.classList.remove('active');
 
