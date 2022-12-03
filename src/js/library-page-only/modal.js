@@ -134,6 +134,11 @@ function closeModal() {
 }
 
 function createModal(id) {
+  if (watchedBtn.classList.contains('active')) {
+    allMoviesList = updateMoviesList('watched');
+  } else {
+    allMoviesList = updateMoviesList('queue');
+  }
   const rendered = renderModal(allMoviesList, id, watched, queue);
   innerModal.innerHTML = rendered[0];
   addListeners(rendered[1], rendered[2]);
