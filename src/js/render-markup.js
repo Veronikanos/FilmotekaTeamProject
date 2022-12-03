@@ -1,13 +1,4 @@
-import { textTrim } from './trimming-text';
-
 export function renderSearchResult(movies) {
-  let TITLE_LENGTH = 32;
-  if (window.screen.width < 768) {
-    TITLE_LENGTH = 37;
-  } else if ((window.screen.width >= 768) & (window.screen.width < 1280)) {
-    TITLE_LENGTH = 46;
-  }
-
   const allMovies = movies.map(
     (
       {
@@ -33,11 +24,7 @@ export function renderSearchResult(movies) {
               loading="lazy"
             />
           <p class="main-section__name" ">
-					${
-            textTrim(title, TITLE_LENGTH) ||
-            textTrim(original_title, TITLE_LENGTH) ||
-            ''
-          } <br />
+					${textTrim(title) || textTrim(original_title) || 'No Title'} <br />
 					<span class="main-section__description">${findGenres(genre_ids) || 'No Genre'}
 					| ${releaseYear}</span>
 				</p>
@@ -45,6 +32,21 @@ export function renderSearchResult(movies) {
     }
   );
   return allMovies;
+}
+
+function textTrim(str) {
+  let TITLE_LENGTH = 32;
+
+  if (window.screen.width < 768) {
+    TITLE_LENGTH = 37;
+  } else if ((window.screen.width >= 768) & (window.screen.width < 1280)) {
+    TITLE_LENGTH = 46;
+  }
+
+  if (str.length > TITLE_LENGTH) {
+    return `${str.substring(0, TITLE_LENGTH)}...`;
+  }
+  return str;
 }
 
 function checkDataBeforeRender(poster_path, releaseDate) {
