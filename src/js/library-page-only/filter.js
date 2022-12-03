@@ -50,7 +50,7 @@ function renderData(DATA_KEY) {
         'beforeend',
         `<span class="rating-span">${
           Math.round(e.dataset.rating * 10) / 10
-        }<span>`
+        }</span>`
       );
     }
   });

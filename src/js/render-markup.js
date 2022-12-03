@@ -23,8 +23,8 @@ export function renderSearchResult(movies) {
               class="main-section__image"
               loading="lazy"
             />
-          <p class="main-section__name" ">
-					${textTrim(title) || textTrim(original_title) || 'No Title'} <br />
+          <p class="main-section__name">
+					${title || original_title || 'No Title'} <br />
 					<span class="main-section__description">${findGenres(genre_ids) || 'No Genre'}
 					| ${releaseYear}</span>
 				</p>
@@ -34,13 +34,14 @@ export function renderSearchResult(movies) {
   return allMovies;
 }
 
+// delete if nobody use
 function textTrim(str) {
-  let TITLE_LENGTH = 32;
+  let TITLE_LENGTH = 30;
 
   if (window.screen.width < 768) {
-    TITLE_LENGTH = 37;
+    TITLE_LENGTH = 35;
   } else if ((window.screen.width >= 768) & (window.screen.width < 1280)) {
-    TITLE_LENGTH = 46;
+    TITLE_LENGTH = 44;
   }
 
   if (str.length > TITLE_LENGTH) {
@@ -69,7 +70,7 @@ function findGenres(ids) {
   let res = [];
   for (const item of ids) {
     let h = genres.find(genre => genre.id === Number(item));
-    res.push(h.name);
+    h.name !== 'Science Fiction' ? res.push(h.name) : res.push('Sci-Fi');
   }
   const formattedGenres =
     res.length > 2 ? `${res[0]}, ${res[1]}, Other` : res.join(', ');
