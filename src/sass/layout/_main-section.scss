@@ -74,11 +74,27 @@
   }
 
   &__name {
+    position: relative;
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: inherit;
+    overflow: hidden;
+    white-space: nowrap;
+
     margin-top: 10px;
     text-transform: uppercase;
   }
 
   &__description {
+    display: inline-block;
+    text-overflow: ellipsis;
+
+    position: relative;
+    width: calc(100% - 100px);
+
+    overflow: hidden;
+    white-space: nowrap;
+
     color: $accent-color;
     text-transform: capitalize;
   }
@@ -129,10 +145,21 @@
 }
 
 .rating-span {
+  position: absolute;
+  display: inline;
+  right: 8px;
+  bottom: 3px;
+
   color: $white-color;
   background-color: $accent-color;
 
   padding: 3px 8px;
-  margin-left: 8px;
   border-radius: 5px;
+
+  @include tablet {
+    padding: 1px 10px;
+  }
+  @include desktop {
+    padding: 3px 12px;
+  }
 }

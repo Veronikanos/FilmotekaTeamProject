@@ -48,9 +48,9 @@ function renderData(DATA_KEY) {
     if (e.dataset.rating !== '0') {
       e.lastElementChild.insertAdjacentHTML(
         'beforeend',
-        `<span class="rating-span">${
+        `<div class="rating-span">${
           Math.round(e.dataset.rating * 10) / 10
-        }<span>`
+        }</div>`
       );
     }
   });
