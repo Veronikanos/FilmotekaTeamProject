@@ -20,7 +20,9 @@
     padding: 13px 41px;
   }
 
-  &.active {
+  &:hover,
+  &:focus,
+  .active {
     color: $background-highlight-color;
     background-color: $accent-color;
     border-color: $accent-color;
