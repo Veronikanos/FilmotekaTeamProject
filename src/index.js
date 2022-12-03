@@ -1,5 +1,6 @@
 import './js/refs';
 import './js/init';
+import './js/notifly-options';
 import './js/first-loading';
 import './js/render-markup';
 import './js/main-page-only/modal';
