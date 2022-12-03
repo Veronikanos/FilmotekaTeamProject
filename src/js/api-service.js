@@ -1,5 +1,4 @@
 import { hideSpinner, showSpinner } from './spinner';
-import { createPagination } from './main-page-only/pagination';
 
 const axios = require('axios').default;
 
