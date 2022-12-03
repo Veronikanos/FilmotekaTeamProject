@@ -5,6 +5,13 @@ import { createPagination } from './main-page-only/pagination';
 
 export async function onLoadedHomePage() {
   const genres = await moviesApiService.getGenres(); // Отримання всіх жанрів
+  console.log(genres);
+  genres.forEach(e => {
+    //перебір об'єкта назв та заміна на Sci-fi
+    if (e.id === 878) {
+      e.name = 'Sci-fi';
+    }
+  });
   localStorage.setItem('allGenres', JSON.stringify(genres)); // Запис всіх жанрів у localStorage
   const result = await moviesApiService.fetchTrending(); // Запит на отримання трендових фільмів
   const markup = renderSearchResult(result.data.results); // Рендер розмітки
