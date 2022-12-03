@@ -70,7 +70,7 @@ function findGenres(ids) {
   let res = [];
   for (const item of ids) {
     let h = genres.find(genre => genre.id === Number(item));
-    res.push(h.name);
+    h.name !== 'Science Fiction' ? res.push(h.name) : res.push('Sci-Fi');
   }
   const formattedGenres =
     res.length > 2 ? `${res[0]}, ${res[1]}, Other` : res.join(', ');
