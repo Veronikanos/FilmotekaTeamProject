@@ -97,7 +97,10 @@ export function showModal(e) {
         : e.target.closest('div').dataset.id;
 
     createModal(id);
-    body.classList.add('no-scroll');
+
+    const top = window.scrollY;
+    body.style.position = 'fixed';
+    body.style.top = `-${top}px`;
   }
 }
 
