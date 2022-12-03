@@ -86,14 +86,15 @@
   }
 
   &__description {
-    display: inline-block;
-    text-overflow: ellipsis;
+    margin-right: 8px;
+    // display: inline;
+    // text-overflow: ellipsis;
 
-    position: relative;
-    width: calc(100% - 100px);
+    // position: relative;
+    // width: calc(100% - 100px);
 
-    overflow: hidden;
-    white-space: nowrap;
+    // overflow: hidden;
+    // white-space: nowrap;
 
     color: $accent-color;
     text-transform: capitalize;
@@ -124,7 +125,7 @@
 
   &__rating {
     padding: 3px 8px;
-    margin-left: 4px;
+    margin-left: 8px;
     min-width: 40px;
     font-size: 12px;
     border-radius: 5px;
@@ -145,11 +146,6 @@
 }
 
 .rating-span {
-  position: absolute;
-  display: inline;
-  right: 8px;
-  bottom: 3px;
-
   color: $white-color;
   background-color: $accent-color;
 
