@@ -13,7 +13,7 @@ const {
 
 export async function watchTrailer(e) {
   const trailers = await fetchTrailer(e.target.dataset.id);
-  if (!trailers.length) {
+  if (!trailers.data.results.length) {
     Notiflix.Notify.failure('This one has no trailer:(');
   } else {
     modal.classList.add('move-left');
