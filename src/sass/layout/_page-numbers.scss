@@ -5,9 +5,11 @@
 .tui-next-is-ellip,
 .tui-prev-is-ellip {
   display: none;
+  pointer-events: none;
 
   @include tablet {
     display: block;
+    pointer-events: all;
   }
 }
 
@@ -27,9 +29,11 @@
     &--first,
     &--last {
       display: none;
+      pointer-events: none;
 
       @include tablet {
         display: block;
+        pointer-events: all;
       }
     }
   }
@@ -88,10 +92,12 @@
 }
 .main-section__arrows--last {
   display: none;
+  pointer-events: none;
   @include tablet {
     position: relative;
     right: 40px;
     display: grid;
     place-items: center;
+    pointer-events: all;
   }
 }
