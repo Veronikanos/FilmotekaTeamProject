@@ -58,6 +58,7 @@ export function createPagination(fetchType) {
 
     const nextArrow = document.querySelector('.main-section__arrows--next');
     const totalPages = options.totalItems / 20;
+
     const lastArrow = document.querySelector('.main-section__arrows--last');
     if (totalPages > 5 && totalPages > page + 3 && screen.width > 768) {
       if (lastArrow) {
@@ -73,4 +74,5 @@ export function createPagination(fetchType) {
       if (nextArrow) nextArrow.classList.remove('move-right-a-little');
     }
   });
+  body.scrollTop = body.scrollHeight;
 }
