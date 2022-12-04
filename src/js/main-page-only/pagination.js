@@ -73,6 +73,6 @@ export function createPagination(fetchType) {
       }
       if (nextArrow) nextArrow.classList.remove('move-right-a-little');
     }
+    body.scrollTop = body.scrollHeight;
   });
-  body.scrollTop = body.scrollHeight;
 }
