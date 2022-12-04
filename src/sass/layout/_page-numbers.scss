@@ -8,8 +8,13 @@
   pointer-events: none;
 
   @include tablet {
-    display: block;
+    // display: block;
     pointer-events: all;
+
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    display: grid;
   }
 }
 
