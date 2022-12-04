@@ -87,15 +87,6 @@
 
   &__description {
     margin-right: 8px;
-    // display: inline;
-    // text-overflow: ellipsis;
-
-    // position: relative;
-    // width: calc(100% - 100px);
-
-    // overflow: hidden;
-    // white-space: nowrap;
-
     color: $accent-color;
     text-transform: capitalize;
   }
@@ -158,4 +149,18 @@
   @include desktop {
     padding: 3px 12px;
   }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
