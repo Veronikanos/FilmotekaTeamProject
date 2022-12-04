@@ -1,3 +1,5 @@
+import emptyPhoto from '../images/empty-photo/empty-poster.jpg';
+
 export function renderModal(list, id, watched, queue) {
   const {
     poster_path,
@@ -77,7 +79,7 @@ export function renderModal(list, id, watched, queue) {
       <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" />
     </div>`
     : `<div class="modal__img">
-      <img src="https://media.istockphoto.com/id/1193046540/vector/photo-coming-soon-image-icon-vector-illustration-isolated-on-white-background-no-website.jpg?s=612x612&w=0&k=20&c=4wx1UzigP0g9vJv9D_DmOxdAT_DtX5peZdoS4hi2Fqg=" alt="photo coming soon" />
+      <img src="${emptyPhoto}" alt="photo coming soon" />
     </div>`;
 
   return [

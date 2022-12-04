@@ -1,3 +1,5 @@
+import emptyPhoto from '../images/empty-photo/empty-poster.jpg';
+
 export function renderSearchResult(movies) {
   const allMovies = movies.map(
     (
@@ -19,7 +21,7 @@ export function renderSearchResult(movies) {
       return `<div class="main-section__card" id="${idx}" data-id="${idx}" data-rating="${vote_average}">
             <img
               src="${poster}"
-              alt="${title || original_title || ''}"
+              alt="${title || original_title || 'poster image'}"
               class="main-section__image"
               loading="lazy"
             />
@@ -55,7 +57,7 @@ function checkDataBeforeRender(poster_path, releaseDate) {
   let releaseYear;
 
   if (!poster_path) {
-    poster = `https://media.istockphoto.com/id/1193046540/vector/photo-coming-soon-image-icon-vector-illustration-isolated-on-white-background-no-website.jpg?s=612x612&w=0&k=20&c=4wx1UzigP0g9vJv9D_DmOxdAT_DtX5peZdoS4hi2Fqg=`;
+    poster = `${emptyPhoto}`;
   }
   if (!releaseDate) {
     releaseYear = 'No release year';
