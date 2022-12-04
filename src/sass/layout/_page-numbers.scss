@@ -8,8 +8,13 @@
   pointer-events: none;
 
   @include tablet {
-    display: block;
+    // display: block;
     pointer-events: all;
+
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    display: grid;
   }
 }
 
@@ -21,10 +26,10 @@
     height: 40px;
 
     &--prev {
-      background-image: url(../images/arrow-left.jpg);
+      background-image: url(../images/arrows/arrow-left.jpg);
     }
     &--next {
-      background-image: url(../images/arrow-right.jpg);
+      background-image: url(../images/arrows/arrow-right.jpg);
     }
     &--first,
     &--last {

@@ -1,18 +1,18 @@
 import { hideSpinner, showSpinner } from './spinner';
-
-const axios = require('axios').default;
+import axios from 'axios';
 
 export default class MoviesApiService {
   constructor() {
     this.page = 1;
     this.query = '';
     this.API_KEY = '2d95e97f255e7635245c1980eab541d3';
+    this.BASE_URL = 'https://api.themoviedb.org/3/';
   }
 
   async getGenres() {
     try {
       const { data } = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${this.API_KEY}&language=en-US`
+        `${this.BASE_URL}genre/movie/list?api_key=${this.API_KEY}&language=en-US`
       );
       return data.genres;
     } catch (error) {
@@ -21,10 +21,16 @@ export default class MoviesApiService {
   }
 
   async fetchTrending() {
+    const searchParams = new URLSearchParams({
+      page: this.page,
+      include_adult: false,
+      api_key: this.API_KEY,
+    });
+
     try {
       showSpinner();
       const result = await axios.get(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.API_KEY}&page=${this.page}&include_adult=false`
+        `${this.BASE_URL}trending/movie/week?${searchParams}`
       );
       localStorage.setItem(
         'currentFilmList',
@@ -42,10 +48,18 @@ export default class MoviesApiService {
   }
 
   async fetchMoviesByKeyword() {
+    const searchParams = new URLSearchParams({
+      page: this.page,
+      include_adult: false,
+      api_key: this.API_KEY,
+      language: 'en-US',
+      query: this.query,
+    });
+
     try {
       showSpinner();
       const result = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&language=en-US&query=${this.query}&page=${this.page}&include_adult=false`
+        `${this.BASE_URL}search/movie?${searchParams}`
       );
       localStorage.setItem(
         'currentFilmList',

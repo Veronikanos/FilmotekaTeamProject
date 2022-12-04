@@ -1,3 +1,5 @@
+import emptyPhoto from '../images/empty-photo/empty-poster.jpg';
+
 export function renderSearchResult(movies) {
   const allMovies = movies.map(
     (
@@ -19,7 +21,7 @@ export function renderSearchResult(movies) {
       return `<div class="main-section__card" id="${idx}" data-id="${idx}" data-rating="${vote_average}">
             <img
               src="${poster}"
-              alt="${title || original_title || ''}"
+              alt="${title || original_title || 'poster image'}"
               class="main-section__image"
               loading="lazy"
             />
@@ -34,28 +36,12 @@ export function renderSearchResult(movies) {
   return allMovies;
 }
 
-// delete if nobody use
-function textTrim(str) {
-  let TITLE_LENGTH = 30;
-
-  if (window.screen.width < 768) {
-    TITLE_LENGTH = 35;
-  } else if ((window.screen.width >= 768) & (window.screen.width < 1280)) {
-    TITLE_LENGTH = 44;
-  }
-
-  if (str.length > TITLE_LENGTH) {
-    return `${str.substring(0, TITLE_LENGTH)}...`;
-  }
-  return str;
-}
-
 function checkDataBeforeRender(poster_path, releaseDate) {
   let poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
   let releaseYear;
 
   if (!poster_path) {
-    poster = `https://media.istockphoto.com/id/1193046540/vector/photo-coming-soon-image-icon-vector-illustration-isolated-on-white-background-no-website.jpg?s=612x612&w=0&k=20&c=4wx1UzigP0g9vJv9D_DmOxdAT_DtX5peZdoS4hi2Fqg=`;
+    poster = `${emptyPhoto}`;
   }
   if (!releaseDate) {
     releaseYear = 'No release year';

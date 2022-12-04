@@ -32,16 +32,14 @@ export function createPagination(fetchType) {
     body.scrollTop = body.scrollHeight;
     const { page } = eventData;
     moviesApiService.page = page;
+    const firstArrow = document.querySelector('.main-section__arrows--first');
+    const prevArrow = document.querySelector('.main-section__arrows--prev');
     if (page > 4) {
-      const firstArrow = document.querySelector('.main-section__arrows--first');
-      const prevArrow = document.querySelector('.main-section__arrows--prev');
       firstArrow.innerText = '1';
       firstArrow.style.pointerEvents = 'all';
 
       prevArrow.classList.add('move-left-a-little');
     } else {
-      const prevArrow = document.querySelector('.main-section__arrows--prev');
-      const firstArrow = document.querySelector('.main-section__arrows--first');
       if (firstArrow) {
         firstArrow.innerText = '';
         firstArrow.style.pointerEvents = 'none';
