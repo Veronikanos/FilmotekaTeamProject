@@ -7,6 +7,10 @@ const { paginationContainer, allCardsSection } = refs;
 
 export function createPagination(fetchType) {
   const totalResults = localStorage.getItem('totalResults');
+  if (JSON.parse(totalResults) <= 20) {
+    paginationContainer.innerHTML = '';
+    return;
+  }
 
   const options = {
     centerAlign: true,
