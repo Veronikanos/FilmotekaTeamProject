@@ -19,7 +19,7 @@ async function onSubmitSearchForm(event) {
       .trim()
       .toLowerCase();
 
-    if (moviesApiService.searchQuery === '') {
+    if (!moviesApiService.searchQuery) {
       refs.noResultsText.classList.remove('visually-hidden');
       return;
     } else {
@@ -29,7 +29,7 @@ async function onSubmitSearchForm(event) {
     moviesApiService.resetPage();
     const films = await moviesApiService.fetchMoviesByKeyword();
 
-    if (films.data.total_results === 0) {
+    if (!films.data.total_results) {
       refs.noResultsText.classList.remove('visually-hidden');
       refs.headerFormInput.reset();
       return;
