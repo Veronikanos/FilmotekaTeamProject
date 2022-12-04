@@ -1,13 +1,10 @@
 .container {
   width: 100%;
-  max-width: 320px;
-  padding-inline: 10px;
+  max-width: 280px;
   margin: 0 auto;
 
-
   @include tablet {
-    max-width: 768px;
-    padding-inline: 16px;
+    max-width: 704px;
   }
 
   @include desktop {
