@@ -10,11 +10,11 @@ const DATA_KEY1 = 'watched';
 const DATA_KEY2 = 'queue';
 
 export function renderWatched() {
-  cardsRenderDivRef.innerHTML = `Its empty here, add movies you've already watched.`;
   watchedButRef.classList.add('active');
   queuedButRef.classList.remove('active');
 
   if (!localStorage.getItem(DATA_KEY1)) {
+    // cardsRenderDivRef.innerHTML = `Its empty here, add movies you've already watched.`;
     Notiflix.Notify.warning('No movies added!');
     return;
   }
@@ -22,11 +22,11 @@ export function renderWatched() {
 }
 
 export function renderQueue() {
-  cardsRenderDivRef.innerHTML = `It's empty here, add the movies you want to watch.`;
   queuedButRef.classList.add('active');
   watchedButRef.classList.remove('active');
 
   if (!localStorage.getItem(DATA_KEY2)) {
+    // cardsRenderDivRef.innerHTML = `It's empty here, add the movies you want to watch.`;
     Notiflix.Notify.warning('No movies added!');
     return;
   }
@@ -36,7 +36,10 @@ export function renderQueue() {
 
 function renderData(DATA_KEY) {
   let dataToRender = JSON.parse(localStorage.getItem(DATA_KEY));
-  if (!dataToRender) {
+  console.log(dataToRender);
+  if (!dataToRender.length) {
+    cardsRenderDivRef.innerHTML =
+      'You have not added anything to this list yet.';
     Notiflix.Notify.warning('No movies added!');
     return;
   }
