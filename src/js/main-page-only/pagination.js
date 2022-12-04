@@ -3,7 +3,7 @@ import { moviesApiService } from '../init';
 import { renderSearchResult } from '../render-markup';
 import { refs } from '../refs';
 
-const { paginationContainer, allCardsSection } = refs;
+const { paginationContainer, allCardsSection, body } = refs;
 
 export function createPagination(fetchType) {
   const totalResults = localStorage.getItem('totalResults');
@@ -29,6 +29,7 @@ export function createPagination(fetchType) {
 
   const pagination = new Pagination(paginationContainer, options);
   pagination.on('afterMove', async function (eventData) {
+    body.scrollTop = body.scrollHeight;
     const { page } = eventData;
     moviesApiService.page = page;
     if (page > 4) {
