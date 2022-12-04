@@ -36,22 +36,6 @@ export function renderSearchResult(movies) {
   return allMovies;
 }
 
-// delete if nobody use
-function textTrim(str) {
-  let TITLE_LENGTH = 30;
-
-  if (window.screen.width < 768) {
-    TITLE_LENGTH = 35;
-  } else if ((window.screen.width >= 768) & (window.screen.width < 1280)) {
-    TITLE_LENGTH = 44;
-  }
-
-  if (str.length > TITLE_LENGTH) {
-    return `${str.substring(0, TITLE_LENGTH)}...`;
-  }
-  return str;
-}
-
 function checkDataBeforeRender(poster_path, releaseDate) {
   let poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
   let releaseYear;

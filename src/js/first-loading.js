@@ -4,11 +4,10 @@ import { refs } from './refs';
 import { createPagination } from './main-page-only/pagination';
 
 export async function onLoadedHomePage() {
-  const genres = await moviesApiService.getGenres(); // Отримання всіх жанрів
-  console.log(genres);
-  localStorage.setItem('allGenres', JSON.stringify(genres)); // Запис всіх жанрів у localStorage
-  const result = await moviesApiService.fetchTrending(); // Запит на отримання трендових фільмів
-  const markup = renderSearchResult(result.data.results); // Рендер розмітки
+  const genres = await moviesApiService.getGenres();
+  localStorage.setItem('allGenres', JSON.stringify(genres));
+  const result = await moviesApiService.fetchTrending();
+  const markup = renderSearchResult(result.data.results);
   createPagination('trending');
 
   refs.allCardsSection.insertAdjacentHTML('beforeend', markup.join(''));
