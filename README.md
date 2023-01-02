@@ -1,99 +1,79 @@
-# Parcel template
+# This is the graduation project of JavaScript course, GоIT academy - Filmoteka.
 
-Этот проект был создан при помощи Parcel. Для знакомства и настройки
-дополнительных возможностей [обратись к документации](https://parceljs.org/).
+Our team is "JS Mastermind" and we are proud of our project. We tried to do our
+best during 5 working days and you can see the result for clicking to link
+below:
 
-## Подготовка нового проекта
+[View a project link.](https://veronikanos.github.io/FilmotekaTeamProject)
 
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Склонируй этот репозиторий.
-3. Измени имя папки с `parcel-project-template` на имя своего проекта.
-4. Создай новый пустой репозиторий на GitHub.
-5. Открой проект в VSCode, запусти терминал и свяжи проект с GitHub-репозиторием
-   [по инструкции](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
-6. Установи зависимости проекта в терминале командой `npm install` .
-7. Запусти режим разработки, выполнив команду `npm start`.
-8. Перейди в браузере по адресу [http://localhost:1234](http://localhost:1234).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
+## This project was created by:
 
-## Файлы и папки
+- Team Lead: [Veronika Tlostiuk]()
+- Scrum master & Front-end developer:
+  [Arsenii Maksymenko](https://github.com/smerch88)
+- Front-end developer: [Petro Kryvyak](https://github.com/Petro199)
+- Front-end developer: [Inna Forkert](https://github.com/InnaForkert)
+- Front-end developer: [Oleksii Turchynyk](https://github.com/TurchynykOleksii)
 
-- Все паршалы файлов стилей должны лежать в папке `src/sass` и импортироваться в
-  файлы стилей страниц. Например, для `index.html` файл стилей называется
-  `index.scss`.
-- Изображения добавляй в папку `src/images`. Сборщик оптимизирует их, но только
-  при деплое продакшн версии проекта. Все это происходит в облаке, чтобы не
-  нагружать твой компьютер, так как на слабых машинах это может занять много
-  времени.
+---
 
-## Деплой
+We prepared adaptive web page for three screen types with following breakpoints:
+mobile - 320px, tablet - 768px, desktop - 1280px according to Figma layout, that
+we got as a part of task.
 
-Для настройки деплоя проекта необходимо выполнить несколько дополнительных шагов
-по настройке твоего репозитория. Зайди во вкладку `Settings` и в подсекции
-`Actions` выбери выбери пункт `General`.
+---
 
-![GitHub actions settings](./assets/actions-config-step-1.png)
+### We dealt with such tasks :
 
-Пролистай страницу до последней секции, в которой убедись что выбраны опции как
-на следующем изображении и нажми `Save`. Без этих настроек у сборки будет
-недостаточно прав для автоматизации процесса деплоя.
+- develop a web-api for searching films by keyword;
+- show popular films at the main page;
+- organize user's library for collecting favorite and watched films;
+- organize for user's library an opportunity to delete movie from library;
+- create a movie card like modal window with movie's detailed description;
+- show movie trailers at the user's request;
+- implement pagination (tui-pagination);
+- implement custom cursor and scroll;
+- prune long titles under each card, so every row was the same height for better
+  visual.
 
-![GitHub actions settings](./assets/actions-config-step-2.png)
+  ***
 
-Продакшн версия проекта будет автоматически собираться и деплоиться на GitHub
-Pages, в ветку `gh-pages`, каждый раз когда обновляется ветка `main`. Например,
-после прямого пуша или принятого пул-реквеста. Для этого необходимо в файле
-`package.json` отредактировать поле `homepage` и скрипт `build`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
+### We used such technologies:
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/",
-"scripts": {
-  "build": "parcel build src/*.html --public-url /your_repo_name/"
-},
-```
+- HTML and CSS/SASS;
+- JavaScript;
+- API/HTTP Requests;
+- Axios/Notify/Tui-pagination,
+- Parcel;
+- Git/Github;
+- Trello/Scrum methodology
 
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
+---
 
-![GitHub Pages settings](./assets/repo-settings.png)
+## Product's presentation photo
 
-### Статус деплоя
+![Product's presentation](./assets/presentation.png)
 
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
+---
 
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
+### HOW TO RUN THIS PROJECT LOCALLY
 
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
+This project was created with Parcel. For familiarization and setting additional
+features [refer to documentation](https://parceljs.org/).
 
-![Deployment status](./assets/status.png)
+Clone this repo:
+`git clone https://github.com/Veronikanos/FilmotekaTeamProject.git`
 
-### Живая страница
+In the project directory, you can run:
 
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/parcel-project-template](https://goitacademy.github.io/parcel-project-template).
+#### `npm install`
 
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` или скрипта `build` в
-файле `package.json`.
+then
 
-## Как это работает
+#### `npm start`
 
-![How it works](./assets/how-it-works.png)
+Runs the app in the development mode.\
+Open [http://localhost:1234](http://localhost:1234) to view it in your browser.
 
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
